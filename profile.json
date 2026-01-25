@@ -1,7 +1,7 @@
 {
   "name": "Harikrushna V. Adiecha",
-  "designation": "Senior Software Engineer",
-  "employer": "Enstead",
+  "designation": "Tech Lead - AI",
+  "employer": "WebOccult Technologies",
   "city": "Ahmedabad",
   "contact": {
     "mobile": "+91-903-331-9723",
@@ -68,14 +68,20 @@
       "AutomatedTesting": 65
     }
   },
-  "hobbies": ["Electronics Experiments", "Wood work", "Pencil Drawing"],
-  "education": [{
-    "degree": "B.E. (Computer Science & Engineering)",
-    "institute": "Om Shanti Engineering Collage, Rajkot",
-    "university": "Gujarat Technological University",
-    "passing_year": 2012
-  }],
-  "projects":[
+  "hobbies": [
+    "Electronics Experiments",
+    "Wood work",
+    "Pencil Drawing"
+  ],
+  "education": [
+    {
+      "degree": "B.E. (Computer Science & Engineering)",
+      "institute": "Om Shanti Engineering Collage, Rajkot",
+      "university": "Gujarat Technological University",
+      "passing_year": 2012
+    }
+  ],
+  "projects": [
     {
       "title": "Log Monitoring System",
       "description": "It’s a system that collects logs of web application and save them into a database Instead of typical text files, in the same system we also provide tabular view of logs and developer can apply filters on them so debugging will be easy",
@@ -83,243 +89,494 @@
       "months_worked": 6,
       "team_size": 4,
       "role": "Fullstack",
-      "skills": ["Java", "MongoDB", "JettyServer"]
-    }, {
+      "skills": [
+        "Java",
+        "MongoDB",
+        "JettyServer"
+      ]
+    },
+    {
       "title": "Steganography with image file",
       "description": "This project is to embed message into an image file. in this project merger and separate text message with Image file using LSB technique.",
       "year": 2010,
       "months_worked": 0,
       "team_size": 1,
       "role": "Owner",
-      "skills": ["C", "LBS Technique"]
-    }, {
+      "skills": [
+        "C",
+        "LBS Technique"
+      ]
+    },
+    {
       "title": "10xEngineer",
       "description": "This project is an e-learning project for engineers, in which i worked on quiz module, folder structure tree using javascript, image crop function, and many more small task.",
       "year": 2012,
       "months_worked": 5,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["Javascript", "NodeJS", "ExpressJS", "MongoDB", "Redis", "Git", "Github"]
-    }, {
+      "skills": [
+        "Javascript",
+        "NodeJS",
+        "ExpressJS",
+        "MongoDB",
+        "Redis",
+        "Git",
+        "Github"
+      ]
+    },
+    {
       "title": "Bingo Game",
       "description": "It’s a game for two players, there are A-Y laters in 5x5 matrix randomly. each player mark each later one by one. later will be marked in both players. and when any line is completed it gives one point. 5 points make player win.",
       "year": 2012,
       "months_worked": 0,
       "team_size": 1,
       "role": "Owner",
-      "skills": ["PHP", "MongoDB", "LongPolling", "Git", "Github"]
-    }, {
+      "skills": [
+        "PHP",
+        "MongoDB",
+        "LongPolling",
+        "Git",
+        "Github"
+      ]
+    },
+    {
       "title": "Whack a mole - Game",
       "description": "This game I created as assignment for canvass interview. it allow user to play whack a mole up to 10 levels. also holds the history of players and show top 10.",
       "year": 2013,
       "months_worked": 0,
       "team_size": 1,
       "role": "Owner",
-      "skills": ["Java", "Sturts", "Hibernate", "Git", "Heroku", "PostgreSql"]
-    }, {
+      "skills": [
+        "Java",
+        "Sturts",
+        "Hibernate",
+        "Git",
+        "Heroku",
+        "PostgreSql"
+      ]
+    },
+    {
       "title": "Canvass all in one marketing plateform",
       "description": "This is all in one marketing platform to do marketing activity like mass mailing (with custom variables), drip marketing, sms marketing, birthday offers, etc. in that I worked in drip marketing, email editor, themes, html email upload, and many more crucial part of the product",
       "year": 2013,
       "months_worked": 13,
       "team_size": 5,
       "role": "Fullstack",
-      "skills": ["Java", "Sturts", "Hibernate", "Git", "Heroku", "PostgreSql"]
-    }, {
+      "skills": [
+        "Java",
+        "Sturts",
+        "Hibernate",
+        "Git",
+        "Heroku",
+        "PostgreSql"
+      ]
+    },
+    {
       "title": "InGenius Youth",
       "description": "This is a freelancing project, basic website about sharing informations, there is a community to post your own post as well as debate on particular topic. there is also functionality to have blog and media, as any event happens it get updated, there is functionality to like and comment for blog post, community post and debates",
       "year": 2014,
       "months_worked": 3,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "CodeIgnitor", "MySql"]
-    }, {
+      "skills": [
+        "PHP",
+        "CodeIgnitor",
+        "MySql"
+      ]
+    },
+    {
       "title": "Family Tree",
       "description": "This project contains the basic informations of families and details of family members. Which is used for several purpose of raghuvanshi sodha religious. It's kind of social web site which designed only for particular community. Also holds few details of history and other stuffs associated with that community.",
       "year": 2014,
       "months_worked": 3,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "CodeIgnitor", "MySql"]
-    }, {
+      "skills": [
+        "PHP",
+        "CodeIgnitor",
+        "MySql"
+      ]
+    },
+    {
       "title": "Email Scrubbing Application",
       "description": "This project validates email addresses (in bulk either by csv or using api) in two phases. first phase will check all basic things like syntax, high risk domain, duplicate entry etc, and second phase will check valid mx record, actual mail send and bounced check using ima protocol (IMAP) and Simple Mail Transfer Protocol (SMTP), by applying custom header tags. this one is one of the most challenging project which I ever done. also feeling proud to make this.",
       "year": 2015,
       "months_worked": 4,
       "team_size": 2,
       "role": "Fullstack",
-      "skills": ["PHP", "Laravel", "MySql", "IMAP", "SMTP", "AngularJS"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql",
+        "IMAP",
+        "SMTP",
+        "AngularJS"
+      ]
+    },
+    {
       "title": "Alhuda flexible - Teaching schedule management",
       "description": "This project muslim community project for learning their holy subjects. student can book lesson as per his/her convenience and tutor will accept it’s scheduled lesson, and student, tutor and admin can communicate with each other using message module",
       "year": 2016,
       "months_worked": 2,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "MySql", "Payment", "PayPal", "Authorized.NET"]
-    }, {
+      "skills": [
+        "PHP",
+        "MySql",
+        "Payment",
+        "PayPal",
+        "Authorized.NET"
+      ]
+    },
+    {
       "title": "Steganography with audio file",
       "description": "This project is to embed message into an audio file. in this project merger and separate text message with audio file using LSB technique.",
       "year": 2015,
       "months_worked": 6,
       "team_size": 3,
       "role": "Mentor",
-      "skills": ["Java", "Struts", "Hibernate", "PostgreSql", "Git", "Heroku"]
-    }, {
+      "skills": [
+        "Java",
+        "Struts",
+        "Hibernate",
+        "PostgreSql",
+        "Git",
+        "Heroku"
+      ]
+    },
+    {
       "title": "Online Examination",
       "description": "This project is to take any MCQ type of exam efficiently and this is just started as minimum viable product and we’ll be improve it gradually",
       "year": 2016,
       "months_worked": 2,
       "team_size": 2,
       "role": "Fullstack",
-      "skills": ["NodeJS", "ExpressJS", "PostgreSql", "AngularJS"]
-    }, {
+      "skills": [
+        "NodeJS",
+        "ExpressJS",
+        "PostgreSql",
+        "AngularJS"
+      ]
+    },
+    {
       "title": "Online Trading System",
       "description": "This project is for online trading on different items like gold, silver, zinc etc. there are so many different logics to implement, this project is for trade brokers.",
       "year": 2016,
       "months_worked": 2,
       "team_size": 5,
       "role": "TeamLead",
-      "skills": ["PHP", "MySql"]
-    }, {
+      "skills": [
+        "PHP",
+        "MySql"
+      ]
+    },
+    {
       "title": "School Management System",
       "description": "This project is to manage all school level documentary work like, attendance, Examination, Marks, Parent notification, library management, etc.",
       "year": 2015,
       "months_worked": 4,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "MySql"]
-    }, {
+      "skills": [
+        "PHP",
+        "MySql"
+      ]
+    },
+    {
       "title": "JK Shah Test Series",
       "description": "This project is for online examination application for  C.A. (chartered accountant)",
       "year": 2016,
       "months_worked": 8,
       "team_size": 6,
       "role": "TeamLead",
-      "skills": ["PHP", "Laravel", "MySql", "Payment", "CCAvanue"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql",
+        "Payment",
+        "CCAvanue"
+      ]
+    },
+    {
       "title": "Ne14glf",
       "description": "This project is for social networking application for  golf players and related people.",
       "year": 2016,
       "months_worked": 4,
       "team_size": 5,
       "role": "Fullstack",
-      "skills": ["PHP", "CodeIgniter", "MySql", "Payment", "Paypal"]
-    }, {
+      "skills": [
+        "PHP",
+        "CodeIgniter",
+        "MySql",
+        "Payment",
+        "Paypal"
+      ]
+    },
+    {
       "title": "Amazon Walmart Product Comparision",
       "description": "We have bunch of categories for amazone and we fetch the same products from walmart and compare pricing and if we have enough margine to purchase from one and sell to another then the project will create listing for it.",
       "year": 2017,
       "months_worked": 4,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "Laravel", "MySql"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql"
+      ]
+    },
+    {
       "title": "Public portal for video streaming and social media",
       "description": "User can create account, make friend requests and chat, also they can put public live video streaming.",
       "year": 2017,
       "months_worked": 6,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "Laravel", "MySql", "NodeJS", "SocketIO", "PeerJS"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql",
+        "NodeJS",
+        "SocketIO",
+        "PeerJS"
+      ]
+    },
+    {
       "title": "SR Gifts",
       "description": "This is an e-commerse site for customized gifts, major challange to make extreamly large png and pdf files to print banners.",
       "year": 2018,
       "months_worked": 8,
       "team_size": 4,
       "role": "TeamLead",
-      "skills": ["PHP", "Laravel", "MySql", "Imagick", "VueJS", "Git"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql",
+        "Imagick",
+        "VueJS",
+        "Git"
+      ]
+    },
+    {
       "title": "Industry 4.0 Solution - IOT based",
       "description": "This project collects data from machine, and we kept all the details of machine for perticular time. and can generate report for Owner, also trigger an alert as needed. Owner can also check current machine status from any where and any time.",
       "year": 2019,
       "months_worked": 6,
       "team_size": 4,
       "role": "Fullstack",
-      "skills": ["NodeJS", "MongoDB", "Git"]
-    }, {
+      "skills": [
+        "NodeJS",
+        "MongoDB",
+        "Git"
+      ]
+    },
+    {
       "title": "Publisher Review",
       "description": "Scrapping reviews from different publisher websites, like google maps, facebook, yelp, zomato, tripadvisor and many more.",
       "year": 2019,
       "months_worked": 20,
       "team_size": 3,
       "role": "TeamLead",
-      "skills": ["PHP", "Laravel", "MySql", "CircleCI", "Python", "Scrapy", "AutomatedTesting"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql",
+        "CircleCI",
+        "Python",
+        "Scrapy",
+        "AutomatedTesting"
+      ]
+    },
+    {
       "title": "IPromote-CTM",
       "description": "This is a service portal that provides a centralized way to get provision virtual numbers from different service provider.",
       "year": 2020,
       "months_worked": 8,
       "team_size": 3,
       "role": "Fullstack",
-      "skills": ["PHP", "Laravel", "MySql", "CircleCI", "AutomatedTesting"]
-    }, {
+      "skills": [
+        "PHP",
+        "Laravel",
+        "MySql",
+        "CircleCI",
+        "AutomatedTesting"
+      ]
+    },
+    {
       "title": "Nvisnx",
       "description": "This is an analysis tool, that can scan the data (s3 buckets, dropbox, etc) and prepare data in such format that you can achive differnet objectives by make query and other stuffs.",
       "year": 2020,
       "months_worked": 8,
       "team_size": 10,
       "role": "Owner of API module and technical problem solver",
-      "skills": ["Python", "FastAPI", "ElasticSearch", "ApachePulsar", "Minio", "ApacheTika", "AutomatedTesting"]
+      "skills": [
+        "Python",
+        "FastAPI",
+        "ElasticSearch",
+        "ApachePulsar",
+        "Minio",
+        "ApacheTika",
+        "AutomatedTesting"
+      ]
     }
   ],
-  "experience": [{
-      "employer": "Improwised Technologies Pvt. Ltd.",
-      "website": "https://www.improwised.com",
-      "city": "Rajkot",
-      "state": "Gujrat",
-      "country": "India",
-      "designation": "Software Engineer",
-      "from": "06-01-2012",
-      "to": "10-31-2012",
-      "skills": ["NodeJS", "ExpressJS", "Git", "Github"]
-    }, {
-      "employer": "Canvass",
-      "website": "https://canvass.in",
-      "city": "Mumbai",
-      "state": "Maharastra",
-      "country": "India",
-      "designation": "Software Design Engineer",
-      "from": "04-25-2013",
-      "to": "05-31-2014",
-      "skills": ["Java", "Struts", "Hibernate", "Git", "Heroku"]
-    }, {
-      "employer": "CodeGeeks",
-      "website": "https://codegeeks.in",
-      "city": "Rajkot",
-      "state": "Gujrat",
-      "country": "India",
-      "designation": "Co-Founder",
-      "from": "06-01-2014",
-      "to": "04-15-2017",
-      "skills": ["PHP", "Laravel", "CodeIgniter", "NodeJS", "ExpressJS", "Java", "Sturts", "Bootstrap", "VueJS", "AngularJS", "MySql", "PostgreSql", "Heroku", "PayPal", "Authorized.NET", "CCAvanue", "Git", "Github"]
-    }, {
-      "employer": "DevRepublic",
-      "website": "https://devrepublic.nl",
+  "experience": [
+    {
+      "employer": "WebOccult Technologies Pvt Ltd",
+      "website": "https://www.weboccult.com",
       "city": "Ahmedabad",
-      "state": "Gujrat",
+      "state": "Gujarat",
       "country": "India",
-      "designation": "Sr. Software Engineer & Tech Lead",
-      "from": "04-17-2017",
-      "to": "09-30-2018",
-      "skills": ["Laravel", "PHP", "Git", "Github", "Gitlab", "Imagick", "VueJS", "NodeJS", "ExpressJS", "SocketIO", "PeerJS"]
-    }, {
+      "designation": "Tech Lead - AI",
+      "from": "11-07-2024",
+      "skills": [
+        "Laravel",
+        "Python",
+        "AI/ML",
+        "GoLang",
+        "Project Management"
+      ]
+    },
+    {
+      "employer": "Enstead",
+      "website": "https://enstead.com/",
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "country": "India",
+      "designation": "Technical Project Manager (Remote)",
+      "from": "06-15-2022",
+      "to": "10-31-2024",
+      "skills": [
+        "PHP",
+        "Laravel",
+        "Git",
+        "Github",
+        "MySql",
+        "MongoDB",
+        "NodeJS",
+        "SocketIO"
+      ]
+    },
+    {
       "employer": "Improwised Technologies Pvt. Ltd.",
       "website": "https://www.improwised.com",
       "city": "Rajkot",
-      "state": "Gujrat",
+      "state": "Gujarat",
       "country": "India",
       "designation": "Sr. Software Engineer & Tech Lead",
       "from": "01-04-2019",
       "to": "06-07-2022",
-      "skills": ["PHP", "Laravel", "Python", "FastAPI", "Scrapy", "NodeJS", "Go-lang", "Git", "Github", "Gitlab", "GitlabCI", "CircleCI", "Docker", "DockerHub", "AWS-S3", "AWS-SQS", "ApachePulsar", "Minio", "ApacheTika", "AutomatedTesting", "MySql", "PostgreSql", "ElasticSearch"]
-    }, {
-      "employer": "Enstead.",
-      "website": "https://enstead.com/",
+      "skills": [
+        "PHP",
+        "Laravel",
+        "Python",
+        "FastAPI",
+        "Scrapy",
+        "NodeJS",
+        "Go-lang",
+        "Git",
+        "Github",
+        "Gitlab",
+        "GitlabCI",
+        "CircleCI",
+        "Docker",
+        "DockerHub",
+        "AWS-S3",
+        "AWS-SQS",
+        "ApachePulsar",
+        "Minio",
+        "ApacheTika",
+        "AutomatedTesting",
+        "MySql",
+        "PostgreSql",
+        "ElasticSearch"
+      ]
+    },
+    {
+      "employer": "DevRepublic",
+      "website": "https://devrepublic.nl",
       "city": "Ahmedabad",
-      "state": "Gujrat",
+      "state": "Gujarat",
       "country": "India",
-      "designation": "Technical Project Manager (Remote)",
-      "from": "06-15-2022",
-      "skills": ["PHP", "Laravel", "Git", "Github", "MySql", "MongoDB", "NodeJS", "SocketIO"]
-    }]
+      "designation": "Sr. Software Engineer & Tech Lead",
+      "from": "04-17-2017",
+      "to": "09-30-2018",
+      "skills": [
+        "Laravel",
+        "PHP",
+        "Git",
+        "Github",
+        "Gitlab",
+        "Imagick",
+        "VueJS",
+        "NodeJS",
+        "ExpressJS",
+        "SocketIO",
+        "PeerJS"
+      ]
+    },
+    {
+      "employer": "CodeGeeks",
+      "website": "https://codegeeks.in",
+      "city": "Rajkot",
+      "state": "Gujarat",
+      "country": "India",
+      "designation": "Co-Founder",
+      "from": "06-01-2014",
+      "to": "04-15-2017",
+      "skills": [
+        "PHP",
+        "Laravel",
+        "CodeIgniter",
+        "NodeJS",
+        "ExpressJS",
+        "Java",
+        "Sturts",
+        "Bootstrap",
+        "VueJS",
+        "AngularJS",
+        "MySql",
+        "PostgreSql",
+        "Heroku",
+        "PayPal",
+        "Authorized.NET",
+        "CCAvanue",
+        "Git",
+        "Github"
+      ]
+    },
+    {
+      "employer": "Canvass",
+      "website": "https://canvass.in",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "country": "India",
+      "designation": "Software Design Engineer",
+      "from": "04-25-2013",
+      "to": "05-31-2014",
+      "skills": [
+        "Java",
+        "Struts",
+        "Hibernate",
+        "Git",
+        "Heroku"
+      ]
+    },
+    {
+      "employer": "Improwised Technologies Pvt. Ltd.",
+      "website": "https://www.improwised.com",
+      "city": "Rajkot",
+      "state": "Gujarat",
+      "country": "India",
+      "designation": "Software Engineer",
+      "from": "06-01-2012",
+      "to": "10-31-2012",
+      "skills": [
+        "NodeJS",
+        "ExpressJS",
+        "Git",
+        "Github"
+      ]
+    }
+  ]
 }
