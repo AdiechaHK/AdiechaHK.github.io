@@ -262,6 +262,7 @@ a {
     height: 400px;
     border-radius: 30px;
     object-fit: cover;
+    object-position: top;
     box-shadow: 20px 20px 60px var(--shadow-color);
     border: 1px solid var(--border);
     position: relative;
