@@ -8,6 +8,23 @@
 
     <!-- Meta Tags -->
     <meta name="description" content="Harikrushna Adiecha - Senior Software Engineer & Tech Lead - AI">
+    <link rel="canonical" href="https://adiechahk.github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adiechahk.github.io/">
+    <meta property="og:title" content="Harikrushna Adiecha (AdiechaHK)">
+    <meta property="og:description"
+        content="Harikrushna Adiecha - Senior Software Engineer & Tech Lead - AI. Specializing in Python, Laravel, and GoLang.">
+    <meta property="og:image" content="https://adiechahk.github.io/images/professional-photo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://adiechahk.github.io/">
+    <meta property="twitter:title" content="Harikrushna Adiecha (AdiechaHK)">
+    <meta property="twitter:description"
+        content="Harikrushna Adiecha - Senior Software Engineer & Tech Lead - AI. Specializing in Python, Laravel, and GoLang.">
+    <meta property="twitter:image" content="https://adiechahk.github.io/images/professional-photo.png">
 
     <!-- Icons -->
     <link rel="icon" type="image/png" href="icon.png">
@@ -20,11 +37,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S38WFPP2PD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-S38WFPP2PD');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S38WFPP2PD');
     </script>
 </head>
 
@@ -49,8 +66,8 @@
                 I'm Software Engineer, exploring the digital world.
             </div>
 
-            <button class="btn-block" onclick="location.href='resume.html'">View Resume</button>
-            <button class="btn-block">Contact Me</button>
+
+            <a href="mailto:adiechahari@gmail.com" class="btn-block">Contact Me</a>
 
             <div class="profile-details">
                 <div class="detail-item">
@@ -86,7 +103,7 @@
                         <i class="fab fa-github"></i>
                         <span>AdiechaHK</span>
                     </a>
-                    <a href="#" class="social-item">
+                    <a href="https://instagram.com/harikrushna_adiecha" class="social-item" target="_blank">
                         <i class="fab fa-instagram"></i>
                         <span>harikrushna_adiecha</span>
                     </a>
@@ -242,7 +259,7 @@
             <div class="community-section" id="community" style="margin-bottom: 32px;">
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
                     <h2 class="section-title">Community & Tech Talks</h2>
-                    <a href="#" style="font-size: 12px;">View all</a>
+                    <!-- <a href="#" style="font-size: 12px;">View all</a> -->
                 </div>
                 <div class="community-grid">
 
@@ -372,11 +389,20 @@
     </div>
 
     <footer class="gh-footer">
-        <span>&copy; 2025 Harikrushna Adiecha</span>
-        <a href="#">Resume</a>
-        <a href="mailto:adiechahari@gmail.com">Contact</a>
-        <a href="https://github.com/AdiechaHK">GitHub</a>
-        <a href="https://linkedin.com/in/harikrushna-adiecha-19434458/">LinkedIn</a>
+        <div class="footer-content">
+            <div class="footer-left">
+                <span>&copy; <span id="current-year">2026</span> Harikrushna Adiecha</span>
+                <span class="built-with">Built with <i class="fas fa-heart" style="color: #ed3b78; margin: 0 4px;"></i>
+                    and Open Source</span>
+            </div>
+            <div class="footer-right">
+
+                <a href="mailto:adiechahari@gmail.com" title="Email"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="https://github.com/AdiechaHK" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/harikrushna-adiecha-19434458/" title="LinkedIn"><i
+                        class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
     </footer>
 
     <script src="scripts/landing.js"></script>
