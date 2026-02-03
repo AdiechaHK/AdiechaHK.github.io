@@ -4,13 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio website for Harikrushna V. Adiecha (Tech Lead - AI), hosted on GitHub Pages at harikrushna.dev.
+Personal portfolio website for Harikrushna V. Adiecha, hosted on GitHub Pages at harikrushna.dev.
+
+**Current state:** The site displays an "Under Construction" placeholder page.
 
 ## Tech Stack
 
 - Static HTML/CSS/JavaScript (no build tools or package manager)
-- Font Awesome 6.5.1 for icons (CDN)
-- Google Analytics tracking enabled
+- Tailwind CSS via CDN (current index.html)
+- Font Awesome for icons (CDN)
+- Google Analytics tracking (ID: G-VJB7WQ3GHS)
 
 ## Development
 
@@ -21,23 +24,21 @@ python -m http.server 8000
 Then visit http://localhost:8000
 
 **Deployment:**
-Push to `master` branch - GitHub Pages auto-deploys.
+Push to `master` branch - GitHub Pages auto-deploys via CNAME (harikrushna.dev).
 
 ## Architecture
 
-### File Structure
-- `index.html` - Main page with all content (profile, skills, community, experience)
-- `styles/github-profile.css` - Primary stylesheet (GitHub-themed with dark/light mode support)
-- `scripts/landing.js` - Minimal JS for dynamic copyright year and contribution graph
-- `config.json` - Theme and experience display settings
-- `profile.json` - Extended profile data (not currently used in main page)
-- `CNAME` - Custom domain configuration
+### Key Files
+- `index.html` - Current live page (Under Construction placeholder using Tailwind)
+- `new-index.html` - Work-in-progress portfolio using Vue 2.x + Tailwind (incomplete)
+- `old-index.html` - Previous version of the site
+- `resume.html` - Separate resume page
+- `config.json` - Theme and meta settings (active/passive title, favicon paths)
+- `profile.json` - Extended profile data (JSON format, not currently used)
 
-### Styling
-- CSS custom properties for theming (`data-theme="dark"` on html element)
+### Prepared GitHub-themed Design (not yet live)
+- `styles/github-profile.css` - Full stylesheet with dark/light mode support via CSS custom properties
+- `scripts/landing.js` - JS for copyright year and contribution graph generation
+- Uses `data-theme="dark"` attribute on html element for theming
 - Two-column layout: 296px fixed sidebar + flexible main content
 - Mobile breakpoint at 768px
-- Skill chips use `.expert` class for highlighting primary skills
-
-### Content Sections
-The page is organized into tabbed sections (About, Skills, Community, Experience) with scroll-based navigation using anchor links.
