@@ -5,12 +5,12 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Harikrushna Adiecha - Tech Lead, Software Artisan with 13+ years of experience">
+    <meta name="description" content="Harikrushna Adiecha — engineer who deploys AI systems into production. 13+ years of backend architecture, multi-tenant SaaS, and live-system ownership.">
     <meta name="author" content="Harikrushna V Adiecha">
     <meta name="color-scheme" content="dark light">
 
     <meta property="og:title" content="Harikrushna V. Adiecha">
-    <meta property="og:description" content="Tech Lead | Software Artisan | 13+ Years Experience">
+    <meta property="og:description" content="Engineer who deploys AI systems into production. 13+ years of backend architecture and live-system ownership.">
     <meta property="og:image" content="https://harikrushna.dev/icon.png">
     <meta property="og:url" content="https://harikrushna.dev">
 
@@ -581,19 +581,164 @@
             border-radius: 50%;
         }
 
-        .skill-bar {
-            width: 60px;
-            height: 6px;
-            background: var(--color-border-default);
-            border-radius: 3px;
-            overflow: hidden;
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .skill-fill {
-            height: 100%;
-            background: var(--color-accent);
-            border-radius: 3px;
-            transition: width 0.3s ease;
+        .skill-tag {
+            font-size: 12px;
+            line-height: 1.4;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--color-border-default);
+            background: var(--color-canvas-default);
+            color: var(--color-text-secondary);
+        }
+
+        .skill-tag.primary {
+            border-color: var(--color-accent);
+            color: var(--color-text-link);
+            background: var(--color-counter-bg);
+            font-weight: 500;
+        }
+
+        /* Selected Work */
+        .work-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .work-card {
+            padding: 20px;
+            border: 1px solid var(--color-border-default);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 6px;
+            background: var(--color-canvas-subtle);
+            transition: border-color 0.15s, transform 0.15s;
+        }
+
+        .work-card:hover {
+            border-color: var(--color-text-muted);
+            border-left-color: var(--color-accent);
+            transform: translateX(2px);
+        }
+
+        .work-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .work-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .work-context {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+        }
+
+        .work-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .work-result {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-success);
+            margin-bottom: 12px;
+        }
+
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .work-tags span {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--color-canvas-inset);
+            border: 1px solid var(--color-border-muted);
+            color: var(--color-text-muted);
+        }
+
+
+        /* ===== chat launcher ===== */
+        .chat-fab{
+            position:fixed;right:24px;bottom:24px;z-index:60;
+            display:flex;align-items:center;gap:0;
+            height:52px;padding:0;
+            background:var(--color-btn-primary-bg);
+            border:1px solid var(--color-btn-primary-bg);
+            border-radius:26px;
+            color:#fff;text-decoration:none;
+            box-shadow:0 6px 24px -6px rgba(0,0,0,.45);
+            overflow:hidden;
+            transition:gap .25s ease, padding .25s ease, background .15s, transform .15s, box-shadow .2s;
+        }
+        .chat-fab:hover{
+            background:var(--color-btn-primary-hover);
+            text-decoration:none;
+            transform:translateY(-2px);
+            box-shadow:0 10px 30px -8px rgba(0,0,0,.5);
+        }
+        .chat-fab .fab-face{
+            width:50px;height:50px;flex:none;border-radius:50%;
+            object-fit:cover;display:block;
+            /* the source photo is full-body — frame the head */
+            transform:scale(2.9);transform-origin:47% 25%;
+        }
+        .chat-fab .fab-wrap{
+            width:50px;height:50px;flex:none;border-radius:50%;
+            overflow:hidden;margin:0;display:block;
+            background:linear-gradient(145deg,var(--color-accent),var(--color-primary-hover));
+        }
+        .chat-fab .fab-label{
+            max-width:0;white-space:nowrap;font-size:14.5px;font-weight:600;
+            opacity:0;overflow:hidden;
+            transition:max-width .28s ease, opacity .2s ease, padding .28s ease;
+            padding:0;
+        }
+        .chat-fab:hover .fab-label,
+        .chat-fab:focus-visible .fab-label{max-width:180px;opacity:1;padding:0 18px 0 12px}
+        .chat-fab:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}
+
+        /* a single nudge on arrival, then it sits still */
+        .chat-fab .fab-ping{
+            position:absolute;inset:-1px;border-radius:26px;
+            border:2px solid var(--color-btn-primary-bg);
+            animation:fabPing 2.2s ease-out 3;pointer-events:none;
+        }
+        @keyframes fabPing{
+            0%{transform:scale(1);opacity:.65}
+            70%,100%{transform:scale(1.28);opacity:0}
+        }
+        @media (prefers-reduced-motion:reduce){
+            .chat-fab,.chat-fab *{transition:none!important;animation:none!important}
+            .chat-fab .fab-label{max-width:180px;opacity:1;padding:0 18px 0 12px}
+        }
+        @media (max-width:768px){
+            .chat-fab{right:16px;bottom:16px;height:48px}
+            .chat-fab .fab-wrap,.chat-fab .fab-face{width:46px;height:46px}
+            /* no hover on touch — show the label permanently */
+            .chat-fab .fab-label{max-width:170px;opacity:1;padding:0 16px 0 10px;font-size:13.5px}
         }
 
         /* Pinned Projects */
@@ -1117,7 +1262,7 @@
                 <p class="profile-username"><span id="typed-text"></span><span style="animation: blink 1s step-end infinite;">|</span></p>
 
                 <p class="profile-bio">
-                    Software Artisan with 13+ years crafting scalable backend systems. Currently leading AI initiatives. Passionate about clean code, mentoring, and community.
+                    I build AI systems into places they have to keep working — production platforms, customer operations, live infrastructure. 13+ years of backend architecture behind it.
                 </p>
 
                 <a href="mailto:adiechahari@gmail.com" class="profile-btn">
@@ -1171,6 +1316,11 @@
                         <i class="fas fa-book"></i>
                         <span class="gh-tab-text">Overview</span>
                     </a>
+                    <a href="#work" class="gh-tab" title="Selected Work">
+                        <i class="fas fa-cubes"></i>
+                        <span class="gh-tab-text">Work</span>
+                        <span class="counter">6</span>
+                    </a>
                     <a href="#experience" class="gh-tab" title="Experience">
                         <i class="fas fa-briefcase"></i>
                         <span class="gh-tab-text">Experience</span>
@@ -1195,37 +1345,117 @@
                     <div class="overview-intro">
                         <h2><i class="fas fa-terminal"></i> About Me</h2>
                         <p>
-                            Hey there! I'm a <strong>software artisan</strong> who has spent over a decade building and scaling backend systems.
-                            I mostly work with <strong>PHP/Laravel</strong> and <strong>Python</strong>, but have exposure to a wide variety of languages and tools.
-                            I've led teams and handled large-scale projects that process <strong>500K+ daily scraping requests</strong> in production,
-                            managing them through queues with hundreds of pods running to serve them.
+                            I put AI systems into production and keep them there. A vision system deciding who gets through a secured door. A speech-to-text → LLM → speech loop that has to answer before a person notices the gap. An agent that assembles our engineering reports and cites its evidence. Not demos — things other people now depend on.
                         </p>
                         <p>
-                            Currently, I'm serving as <strong>Tech Lead</strong> at <a href="https://www.weboccult.com" target="_blank">WebOccult Technologies</a>,
-                            where I'm building scalable backend systems and leading development teams. I'm passionate about clean architecture,
-                            automated testing, and mentoring the next generation of developers.
+                            The reason I can be trusted with that is the thirteen years underneath it. I've owned a high-throughput platform that predated me by eight years and never stopped running, moved a live production database onto new infrastructure with ten seconds of downtime, and I'm currently architecting a ground-up rebuild of an enterprise B2B platform as Tech Lead at <a href="https://www.weboccult.com" target="_blank">WebOccult Technologies</a>.
                         </p>
                         <p>
-                            I'm also an active community member, regularly speaking at <a href="https://x.com/LaravelRajkot" target="_blank">Laravel Rajkot</a>
-                            and <a href="https://x.com/LaravelAhm" target="_blank">Laravel Ahmedabad</a> meetups about Laravel, CI/CD, and modern development practices.
-                            When I'm not coding, you'll find me playing table tennis, experimenting with IoT projects, or enjoying a game of chess.
+                            Most of my work has been close to the people using it — four years embedded with a product group in
+                            Portugal, a deployment on a customer site in Japan, enterprise workflows I had to understand properly before
+                            I could model them. I think that's the interesting part of the job. I also speak at
+                            <a href="https://x.com/LaravelRajkot" target="_blank">Laravel Rajkot</a> and
+                            <a href="https://x.com/LaravelAhm" target="_blank">Laravel Ahmedabad</a> meetups.
                         </p>
                     </div>
 
                     <!-- Contribution Graph -->
                     <div class="contrib-section">
-                        <div class="contrib-header">
-                            <span class="contrib-title"><i class="fas fa-chart-line"></i> Contribution Activity</span>
-                        </div>
                         <div class="contrib-graph" id="contrib-graph"></div>
                         <div class="contrib-legend">
-                            Less
-                            <div class="contrib-day" data-level="0"></div>
-                            <div class="contrib-day" data-level="1"></div>
-                            <div class="contrib-day" data-level="2"></div>
-                            <div class="contrib-day" data-level="3"></div>
-                            <div class="contrib-day" data-level="4"></div>
-                            More
+                            <span>A pixel display, not a contribution graph — it just spells things.</span>
+                        </div>
+                    </div>
+
+                    <!-- Selected Work -->
+                    <div class="gh-section-header" id="work">
+                        <h2 class="gh-section-title">Selected Work</h2>
+                    </div>
+
+                    <div class="work-list">
+                        <div class="work-card">
+                            <div class="work-head">
+                                <span class="work-title">Face recognition driving a physical lock</span>
+                                <span class="work-context">WebOccult · 2025</span>
+                            </div>
+                            <p class="work-desc">
+                                Led engineering for an access-control system on a customer site in Japan — an in-house vision API deciding who
+                                may pass through a secured door, and commercial lock hardware that had never heard of it. The model
+                                was the easy half. A vision model returns a confidence score and a lock needs a yes or no, and the
+                                yes is physical and irreversible. Where that threshold sits, and how it fails when the camera is
+                                dazzled or the network drops, is the actual system.
+                            </p>
+                            <p class="work-result"><i class="fas fa-circle-check"></i> Ran daily in production, on a site I had no control over</p>
+                            <div class="work-tags"><span>Computer vision</span><span>Hardware integration</span><span>On-site deployment</span></div>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-head">
+                                <span class="work-title">An agent that writes the reports nobody wanted to write</span>
+                                <span class="work-context">WebOccult · 2025</span>
+                            </div>
+                            <p class="work-desc">
+                                Built a Claude Code workflow that assembles our engineering status reports from the tools that already hold the truth — the issue tracker and the repositories — attaching evidence to every line it writes. The design
+                                question was which judgments stayed with a human — the agent gathers and drafts, people decide.
+                            </p>
+                            <p class="work-result"><i class="fas fa-circle-check"></i> Most of a day of manual collation down to well under an hour, every claim traceable</p>
+                            <div class="work-tags"><span>Agent orchestration</span><span>LLM tooling</span><span>Tool integration</span></div>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-head">
+                                <span class="work-title">A care robot that had to answer fast enough to feel like talking</span>
+                                <span class="work-context">WebOccult · 2025</span>
+                            </div>
+                            <p class="work-desc">
+                                Delivered a companion robot prototype running a speech-to-text → LLM → text-to-speech loop.
+                                Latency is the whole product here: a pause that would be unremarkable in a chat window is a broken
+                                conversation when someone is speaking out loud to a machine.
+                            </p>
+                            <div class="work-tags"><span>STT / TTS</span><span>LLM pipeline</span><span>Latency engineering</span></div>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-head">
+                                <span class="work-title">Moving a live database without taking it down</span>
+                                <span class="work-context">WebOccult · 2025</span>
+                            </div>
+                            <p class="work-desc">
+                                A production database had outgrown the host it shared with other services and started starving them of memory. Moved it to dedicated infrastructure via
+                                replica-set promotion with a scripted cutover: quiesce writers, verify sync, promote secondary,
+                                rotate credentials, restart.
+                            </p>
+                            <p class="work-result"><i class="fas fa-circle-check"></i> Ten seconds of unplanned downtime, inside a single planned window</p>
+                            <div class="work-tags"><span>MongoDB</span><span>Live migration</span><span>Replica sets</span></div>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-head">
+                                <span class="work-title">When an assumption underneath a system quietly stopped being true</span>
+                                <span class="work-context">Improwised · 2019–2022</span>
+                            </div>
+                            <p class="work-desc">
+                                An eight-year-old platform was built on the premise that the identifiers it received from upstream were
+                                stable. They stopped being stable, so records that were one thing started arriving as several. Rather than
+                                rebuild, I added a content hash over the attributes that actually identify a record as a fallback key,
+                                checked only when the primary ID misses — fixing integrity without breaking existing API contracts.
+                            </p>
+                            <p class="work-result"><i class="fas fa-circle-check"></i> Integrity restored without breaking a single published contract</p>
+                            <div class="work-tags"><span>Deduplication</span><span>Data modeling</span><span>Backwards compatibility</span></div>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-head">
+                                <span class="work-title">Rewriting the hot path of something already running</span>
+                                <span class="work-context">Improwised · 2019–2022</span>
+                            </div>
+                            <p class="work-desc">
+                                I owned a high-throughput fetching platform — hundreds of thousands of jobs a day across a few hundred workers —
+                                and its core was the bottleneck. Migrated the core scraper from Python to Go and rolled
+                                the rewrite into the live system.
+                            </p>
+                            <p class="work-result"><i class="fas fa-circle-check"></i> 10x execution-time improvement, shipped into production traffic</p>
+                            <div class="work-tags"><span>Go</span><span>Python</span><span>High-throughput systems</span></div>
                         </div>
                     </div>
 
@@ -1237,87 +1467,86 @@
                     <div class="skills-grid">
                         <div class="skill-card">
                             <div class="skill-card-title">
+                                <i class="fas fa-robot"></i> AI Systems
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag primary">LLM pipelines</span>
+                                <span class="skill-tag primary">Agent workflows</span>
+                                <span class="skill-tag">OpenAI APIs</span>
+                                <span class="skill-tag">Claude Code</span>
+                                <span class="skill-tag">STT / TTS loops</span>
+                                <span class="skill-tag">Computer vision integration</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title">
+                                <i class="fas fa-sitemap"></i> Architecture
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag primary">Multi-tenant SaaS</span>
+                                <span class="skill-tag primary">Event-driven systems</span>
+                                <span class="skill-tag">Queue-based processing</span>
+                                <span class="skill-tag">Legacy modernization</span>
+                                <span class="skill-tag">API &amp; domain design</span>
+                                <span class="skill-tag">Live migration</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title">
                                 <i class="fas fa-server"></i> Backend
                             </div>
-                            <div class="skill-list">
-                                <div class="skill-item">
-                                    <span class="skill-name expert">PHP / Laravel</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name expert">Python</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">FastAPI</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Go / NodeJS</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 55%"></div></div>
-                                </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag primary">Python</span>
+                                <span class="skill-tag primary">PHP / Laravel</span>
+                                <span class="skill-tag">Go</span>
+                                <span class="skill-tag">FastAPI</span>
+                                <span class="skill-tag">Node.js</span>
                             </div>
                         </div>
 
                         <div class="skill-card">
                             <div class="skill-card-title">
-                                <i class="fas fa-database"></i> Databases
+                                <i class="fas fa-database"></i> Data
                             </div>
-                            <div class="skill-list">
-                                <div class="skill-item">
-                                    <span class="skill-name expert">PostgreSQL</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name expert">MySQL</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Redis</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">MongoDB</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 50%"></div></div>
-                                </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag primary">PostgreSQL</span>
+                                <span class="skill-tag primary">MySQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Redis</span>
+                                <span class="skill-tag">Elasticsearch</span>
                             </div>
                         </div>
 
                         <div class="skill-card">
                             <div class="skill-card-title">
-                                <i class="fas fa-cloud"></i> DevOps
+                                <i class="fas fa-cloud"></i> Cloud &amp; Delivery
                             </div>
-                            <div class="skill-list">
-                                <div class="skill-item">
-                                    <span class="skill-name expert">Git</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Docker</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 60%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">CI/CD</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 55%"></div></div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">AWS</span>
-                                    <div class="skill-bar"><div class="skill-fill" style="width: 50%"></div></div>
-                                </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag primary">AWS</span>
+                                <span class="skill-tag">App Runner / ECR / SQS</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">GitHub Actions</span>
+                                <span class="skill-tag">Nginx</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-card-title">
+                                <i class="fas fa-wave-square"></i> Observability &amp; Quality
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag primary">Grafana</span>
+                                <span class="skill-tag primary">Prometheus</span>
+                                <span class="skill-tag">Sentry</span>
+                                <span class="skill-tag">PHPStan</span>
+                                <span class="skill-tag">Pest / PHPUnit</span>
+                                <span class="skill-tag">n8n</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Interests -->
-                    <div class="gh-section-header">
-                        <h2 class="gh-section-title">Beyond Code</h2>
-                    </div>
-                    <div class="interests-grid">
-                        <div class="interest-item"><i class="fas fa-table-tennis-paddle-ball"></i> Table Tennis</div>
-                        <div class="interest-item"><i class="fas fa-chess"></i> Chess</div>
-                        <div class="interest-item"><i class="fas fa-microchip"></i> IoT Projects</div>
-                        <div class="interest-item"><i class="fas fa-pencil-alt"></i> Pencil Drawing</div>
-                    </div>
                 </section>
 
                 <!-- Experience -->
@@ -1335,9 +1564,9 @@
                                     <span class="timeline-date">Nov 2024 — Present</span>
                                 </div>
                                 <p class="timeline-company"><a href="https://www.weboccult.com" target="_blank">WebOccult Technologies</a>, Ahmedabad</p>
-                                <p class="timeline-desc">Leading a cross-functional team on a ground-up rebuild of a US B2B SaaS platform. Architecture, multi-tenancy, AWS and CI/CD ownership, plus AI product engineering.</p>
+                                <p class="timeline-desc">Lead a small cross-functional team and own end-to-end architecture for a ground-up rebuild of an enterprise B2B platform — domain and data model, multi-tenancy, API contracts, CI/CD, deployment topology. Also led engineering for the vision access-control deployment and the voice prototype, brought Grafana and Prometheus observability to our on-premise estate, and built the agent workflows the team reports through.</p>
                                 <div class="timeline-skills">
-                                    <span>Laravel</span><span>Python</span><span>GoLang</span><span>PostgreSQL</span>
+                                    <span>Laravel</span><span>Python</span><span>AWS</span><span>PostgreSQL</span><span>LLM pipelines</span>
                                 </div>
                             </div>
                         </div>
@@ -1350,7 +1579,7 @@
                                     <span class="timeline-date">Jun 2022 — Oct 2024</span>
                                 </div>
                                 <p class="timeline-company"><a href="https://enstead.com" target="_blank">Enstead</a>, Remote</p>
-                                <p class="timeline-desc">Led delivery of an AR-based remote support platform with ticketing, chat and video. Migrated MySQL to PostgreSQL and owned cross-platform API design.</p>
+                                <p class="timeline-desc">Embedded with a Portugal-based product group as hands-on technical lead, moving across products as delivery priorities required. Architected a remote-support platform combining ticketing, real-time chat, video and on-call augmented reality — letting customers resolve equipment issues without dispatching a field engineer. Migrated MySQL to PostgreSQL and owned cross-platform API design.</p>
                                 <div class="timeline-skills">
                                     <span>Laravel</span><span>NodeJS</span><span>MongoDB</span><span>SocketIO</span>
                                 </div>
@@ -1365,7 +1594,7 @@
                                     <span class="timeline-date">Jan 2019 — Jun 2022</span>
                                 </div>
                                 <p class="timeline-company"><a href="https://www.improwised.com" target="_blank">Improwised Technologies</a>, Rajkot</p>
-                                <p class="timeline-desc">Owned a scraping platform handling 500K+ daily requests across ~300 pods and a 200GB database. Migrated the core scraper from Python to Go for a 10x speed-up.</p>
+                                <p class="timeline-desc">Owned a high-throughput fetching platform that predated me by eight years and never stopped running. Redesigned its identity model after upstream assumptions broke, and rewrote the core from Python to Go inside the live system.</p>
                                 <div class="timeline-skills">
                                     <span>Python</span><span>FastAPI</span><span>Docker</span><span>Apache Pulsar</span>
                                 </div>
@@ -1477,6 +1706,19 @@
                         </a>
                     </p>
                 </section>
+
+                <section id="beyond" class="gh-section">
+                    <!-- Interests -->
+                    <div class="gh-section-header">
+                        <h2 class="gh-section-title">Beyond Code</h2>
+                    </div>
+                    <div class="interests-grid">
+                        <div class="interest-item"><i class="fas fa-table-tennis-paddle-ball"></i> Table Tennis</div>
+                        <div class="interest-item"><i class="fas fa-chess"></i> Chess</div>
+                        <div class="interest-item"><i class="fas fa-microchip"></i> IoT Projects</div>
+                        <div class="interest-item"><i class="fas fa-pencil-alt"></i> Pencil Drawing</div>
+                    </div>
+                </section>
             </div>
 
             <!-- Mobile Contact Section (hidden on desktop) -->
@@ -1562,7 +1804,7 @@
         });
 
         // === Typing effect ===
-        const phrases = ['Tech Lead', 'Software Artisan', 'Laravel Enthusiast', 'Backend Specialist'];
+        const phrases = ['Tech Lead', 'AI Systems Engineer', 'Backend Architect', 'Shipped, not demoed'];
         let pi = 0, ci = 0, del = false;
         const typed = document.getElementById('typed-text');
 
@@ -1735,7 +1977,7 @@
         };
 
         // Words for desktop and mobile
-        const desktopWords = ['LARAVEL', 'ARTISAN', 'PHP', 'CODE'];
+        const desktopWords = ['SHIPPED', 'SCALED', 'TESTED', 'AI'];
         const mobileWords = ['PHP', 'CODE', 'HK', 'DEV'];
         let words = desktopWords;
         let wordIndex = 0;
@@ -1849,5 +2091,11 @@
         console.log('%c🤖 Hey there, curious developer!', 'font-size: 18px; font-weight: bold;');
         console.log('%cLike what you see? Let\'s connect: adiechahari@gmail.com', 'color: #8b949e;');
     </script>
+<a class="chat-fab" href="designs/chat.html" aria-label="Chat with Harikrushna">
+    <span class="fab-ping" aria-hidden="true"></span>
+    <span class="fab-wrap"><img class="fab-face" src="images/harikrushna.jpeg" alt="" onerror="this.remove()"></span>
+    <span class="fab-label">Chat with me</span>
+</a>
+
 </body>
 </html>

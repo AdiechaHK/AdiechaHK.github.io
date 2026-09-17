@@ -1,9 +1,16 @@
-# about-me
+# harikrushna.dev
 
-Hey This is code of my personal [website](https://harikrushna.info), which I just make for fun.
+Source for my personal site — [harikrushna.dev](https://harikrushna.dev).
 
-Here I just put down some random information about me.
+A static single-page site: `index.html` is self-contained (inline CSS and JS), deployed automatically
+by GitHub Pages from `master`.
 
-# Certificates
+## Local development
 
-[Hacker Rank - Problem Solving (basic)](https://www.hackerrank.com/certificates/db31ad0cd7b0)
+```bash
+python -m http.server 8000
+```
+
+## Certificates
+
+[HackerRank — Problem Solving (Basic)](https://www.hackerrank.com/certificates/db31ad0cd7b0)

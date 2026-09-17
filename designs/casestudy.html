@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harikrushna V. Adiecha — Case Studies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfbfa; --surface:#ffffff; --surface-2:#f4f4f2;
+  --fg:#12130f; --fg-2:#4d4f47; --fg-3:#8b8d83;
+  --line:#e5e5e0; --line-2:#efefeb;
+  --ink:#12130f; --pop:#2f5bea; --pop-soft:#eef2fe;
+  --good:#0f7a4d;
+}
+:root[data-theme="dark"]{
+  --bg:#0c0d0a; --surface:#141510; --surface-2:#1b1c16;
+  --fg:#f2f2ee; --fg-2:#b0b2a6; --fg-3:#7b7d72;
+  --line:#26271f; --line-2:#1d1e18;
+  --ink:#f2f2ee; --pop:#7d9bff; --pop-soft:#16192a;
+  --good:#4ade80;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+/* nav */
+nav{
+  display:flex;align-items:center;gap:22px;padding:22px 0;
+  font-size:13px;color:var(--fg-3);flex-wrap:wrap;
+}
+nav .name{font-weight:600;color:var(--fg);font-size:14px;letter-spacing:-.01em}
+nav .sp{flex:1}
+nav a:hover{color:var(--fg)}
+.tbtn{font:inherit;font-size:12px;background:none;border:1px solid var(--line);
+  color:var(--fg-3);padding:5px 11px;border-radius:99px;cursor:pointer}
+.tbtn:hover{border-color:var(--fg-3);color:var(--fg)}
+
+/* hero */
+.hero{padding:64px 0 56px}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pop);margin-bottom:26px;
+}
+.hero h1{
+  font-size:clamp(36px,6.4vw,68px);line-height:1.04;font-weight:600;
+  letter-spacing:-.035em;max-width:17ch;margin-bottom:28px;
+}
+.hero h1 .q{color:var(--fg-3)}
+.hero .say{font-size:19px;line-height:1.65;color:var(--fg-2);max-width:60ch}
+.hero .say b{color:var(--fg);font-weight:600}
+
+/* metric band */
+.band{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin:52px 0 0;
+}
+.metric{padding:26px 26px 26px 0;border-right:1px solid var(--line)}
+.metric:last-child{border-right:none}
+.metric .v{font-size:34px;font-weight:600;letter-spacing:-.035em;line-height:1;display:block;margin-bottom:8px}
+.metric .k{font-size:13px;color:var(--fg-3);line-height:1.45}
+
+/* sections */
+section{padding:64px 0}
+.sec-top{display:flex;align-items:baseline;gap:16px;margin-bottom:34px;flex-wrap:wrap}
+.sec-top h2{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);font-family:"IBM Plex Mono",monospace}
+.sec-top .rule{flex:1;height:1px;background:var(--line);min-width:40px}
+
+/* case cards */
+.case{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:30px;margin-bottom:16px;transition:border-color .18s,box-shadow .18s;
+}
+.case:hover{border-color:var(--fg-3);box-shadow:0 2px 20px -8px rgba(0,0,0,.12)}
+.case-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-bottom:22px}
+.case h3{font-size:23px;font-weight:600;letter-spacing:-.024em;line-height:1.25;max-width:26ch}
+.case-when{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--fg-3);white-space:nowrap;padding-top:6px}
+.par{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-bottom:22px}
+.par > div > .lbl{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--pop);margin-bottom:7px;display:block;
+}
+.par > div > p{font-size:14.5px;line-height:1.62;color:var(--fg-2)}
+.outcome{
+  background:var(--surface-2);border-radius:9px;padding:15px 18px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.outcome .mark{color:var(--good);font-size:15px;line-height:1.5;flex:none;font-weight:700}
+.outcome p{font-size:14.5px;font-weight:500;color:var(--fg);line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.chips span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--fg-3);
+  border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+
+/* capability grid */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cap{background:var(--surface);padding:24px}
+.cap h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--pop);margin-bottom:11px}
+.cap p{font-size:14px;color:var(--fg-2);line-height:1.65}
+.cap p b{color:var(--fg);font-weight:600}
+
+/* roles */
+.role{display:grid;grid-template-columns:200px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--line-2)}
+.role:first-child{border-top:none;padding-top:0}
+.role-l .when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--fg-3);display:block;margin-bottom:5px}
+.role-l .org{font-size:14px;font-weight:600;line-height:1.35}
+.role-l .loc{font-size:12.5px;color:var(--fg-3);margin-top:2px}
+.role-r h3{font-size:17px;font-weight:600;margin-bottom:8px;letter-spacing:-.015em}
+.role-r p{font-size:14.5px;color:var(--fg-2);line-height:1.65;max-width:72ch}
+
+/* talks */
+.talks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.talk{border:1px solid var(--line);border-radius:11px;padding:20px}
+.talk .tt{font-size:15px;font-weight:500;line-height:1.4;margin-bottom:8px}
+.talk .tm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--fg-3);line-height:1.5}
+
+/* contact */
+.contact{
+  border-top:1px solid var(--line);padding:56px 0 76px;
+  display:flex;justify-content:space-between;gap:26px;align-items:flex-end;flex-wrap:wrap;
+}
+.contact h2{font-size:clamp(26px,4vw,38px);font-weight:600;letter-spacing:-.03em;line-height:1.15;max-width:16ch}
+.contact .links{display:flex;flex-direction:column;gap:7px;font-size:14.5px}
+.contact .links a{color:var(--fg-2);border-bottom:1px solid var(--line);padding-bottom:3px}
+.contact .links a:hover{color:var(--pop);border-color:var(--pop)}
+.afk{font-size:13px;color:var(--fg-3);padding-bottom:56px}
+
+@media(max-width:720px){
+  .wrap{padding:0 20px}
+  .role{grid-template-columns:1fr;gap:10px}
+  .case{padding:22px}
+  .metric{padding:20px 18px 20px 0}
+  .metric .v{font-size:27px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <span class="name">Harikrushna V. Adiecha</span>
+    <span class="sp"></span>
+    <a href="#work">Work</a>
+    <a href="#how">Capabilities</a>
+    <a href="#history">History</a>
+    <a href="#contact">Contact</a>
+    <button class="tbtn" onclick="tt()">Theme</button>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow">AI systems in production · 13+ years · Ahmedabad, India</p>
+    <h1>I take AI systems into the places they have to keep working.<span class="q"></span></h1>
+    <p class="say">
+      A face-recognition system authorising entries in a Japanese facility. A speech-to-LLM-to-speech
+      loop inside a care robot. An agent workflow that turned a full day of client reporting into
+      under thirty minutes. <b>Not demos — things other people now depend on</b>, which is a different
+      engineering problem entirely. Thirteen years of backend architecture is what makes that
+      defensible.
+    </p>
+
+    <div class="band">
+      <div class="metric"><span class="v">500K</span><span class="k">requests/day platform owned, up to 300 pods</span></div>
+      <div class="metric"><span class="v">10 sec</span><span class="k">total downtime migrating 36GB of live production data</span></div>
+      <div class="metric"><span class="v">20,000+</span><span class="k">end users on the rebuild I currently architect</span></div>
+      <div class="metric"><span class="v">95%</span><span class="k">of duplicate records eliminated by one redesign</span></div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="sec-top"><h2>Selected work</h2><span class="rule"></span></div>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>Face-recognition access control, deployed in Japan</h3>
+        <span class="case-when">WebOccult · 2025</span>
+      </div>
+      <div class="par">
+        <div><span class="lbl">Problem</span><p>Restricted-area access at a customer site, with an in-house detection API and SESAME smart locks that knew nothing about each other.</p></div>
+        <div><span class="lbl">Approach</span><p>The model was never the hard part. Getting a vision system and third-party hardware to agree on who may pass through a door — reliably, every day, in a building I did not control — was.</p></div>
+      </div>
+      <div class="outcome"><span class="mark">→</span><p>Authorising 30–100 restricted-area entries per day in production.</p></div>
+      <div class="chips"><span>computer vision</span><span>hardware integration</span><span>on-site deployment</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>An agent that writes the reports nobody wanted to write</h3>
+        <span class="case-when">WebOccult · 2025</span>
+      </div>
+      <div class="par">
+        <div><span class="lbl">Problem</span><p>Developer status reports and monthly client progress reports were manual, slow, and easy to get subtly wrong.</p></div>
+        <div><span class="lbl">Approach</span><p>A Claude Code workflow pulling from Odoo and GitHub with per-item evidence attached to every claim. The real design question was which judgments stay with a human — the agent gathers and drafts, people decide.</p></div>
+      </div>
+      <div class="outcome"><span class="mark">→</span><p>Status reports 30–45 min → ~5 min. Monthly client reports: a full working day → under 30 minutes, including revisions.</p></div>
+      <div class="chips"><span>agent orchestration</span><span>LLM tooling</span><span>Odoo + GitHub APIs</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>A care robot that had to answer fast enough to feel like conversation</h3>
+        <span class="case-when">WebOccult · 2025</span>
+      </div>
+      <div class="par">
+        <div><span class="lbl">Problem</span><p>An elder-care robot prototype needing real spoken conversation, not turn-taking around a progress spinner.</p></div>
+        <div><span class="lbl">Approach</span><p>A speech-to-text → LLM → text-to-speech loop where latency is the entire product. A pause that passes unnoticed in a chat window is a broken conversation when someone is speaking aloud and waiting for an answer.</p></div>
+      </div>
+      <div class="chips"><span>STT / TTS</span><span>LLM pipeline</span><span>latency engineering</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>Moving 36GB of production data with the lights on</h3>
+        <span class="case-when">WebOccult · 2025</span>
+      </div>
+      <div class="par">
+        <div><span class="lbl">Problem</span><p>A production MongoDB at 250–300 concurrent connections — web services, batch jobs, edge devices — had begun starving the services sharing its host.</p></div>
+        <div><span class="lbl">Approach</span><p>Replica-set promotion with a scripted cutover: quiesce writers, verify sync, promote the secondary, rotate credentials, restart. Scripted because a cutover you perform by hand is a cutover you perform differently under pressure.</p></div>
+      </div>
+      <div class="outcome"><span class="mark">→</span><p>Ten seconds of total downtime, plus one planned twenty-minute window.</p></div>
+      <div class="chips"><span>MongoDB</span><span>live migration</span><span>replica sets</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>When the client broke the contract our data model rested on</h3>
+        <span class="case-when">Improwised · 2019–2022</span>
+      </div>
+      <div class="par">
+        <div><span class="lbl">Problem</span><p>An eight-year-old scraping platform assumed client-supplied IDs were stable. A client began emitting inconsistent identifiers for the same business, and the assumption collapsed underneath us.</p></div>
+        <div><span class="lbl">Approach</span><p>Rather than rebuild, I added an MD5 content hash over the business's identifying attributes as a fallback key, checked only when the primary ID misses — restoring integrity without breaking a single existing client API contract.</p></div>
+      </div>
+      <div class="outcome"><span class="mark">→</span><p>Eliminated 95% of duplicate business records.</p></div>
+      <div class="chips"><span>deduplication</span><span>data modeling</span><span>backwards compatibility</span></div>
+    </article>
+
+    <article class="case">
+      <div class="case-top">
+        <h3>500K requests a day, and a rewrite shipped into live traffic</h3>
+        <span class="case-when">Improwised · 2019–2022</span>
+      </div>
+      <div class="par">
+        <div><span class="lbl">Problem</span><p>500K requests per day across up to 300 pods against a ~200GB database on rolling three-month retention — and the core scraper was the bottleneck.</p></div>
+        <div><span class="lbl">Approach</span><p>Migrated it from Python to Go and rolled the rewrite into the running large-scale system rather than staging a parallel cutover.</p></div>
+      </div>
+      <div class="outcome"><span class="mark">→</span><p>10× execution-time improvement, shipped into production traffic.</p></div>
+      <div class="chips"><span>Go</span><span>Python</span><span>high-throughput systems</span></div>
+    </article>
+  </section>
+
+  <section id="how">
+    <div class="sec-top"><h2>Capabilities</h2><span class="rule"></span></div>
+    <div class="caps">
+      <div class="cap"><h4>AI systems</h4><p><b>LLM pipelines</b>, <b>agent workflows</b> and orchestration, OpenAI APIs, Claude Code, speech-to-text and text-to-speech loops, computer vision integration.</p></div>
+      <div class="cap"><h4>Architecture</h4><p><b>Multi-tenant SaaS</b>, <b>event-driven</b> and queue-based systems, legacy modernization, domain and data modeling, live migration, high availability.</p></div>
+      <div class="cap"><h4>Backend</h4><p><b>Python</b>, <b>PHP / Laravel</b>, Go, FastAPI, Node.js. REST API design, JWT authentication, role-based authorization.</p></div>
+      <div class="cap"><h4>Data</h4><p><b>PostgreSQL</b>, <b>MySQL</b>, MongoDB, Redis, Elasticsearch. Schema design, query optimization, replication, cross-engine migration.</p></div>
+      <div class="cap"><h4>Cloud &amp; delivery</h4><p><b>AWS</b> — App Runner, ECR, S3, SQS, RDS. Docker, GitHub Actions, Nginx, Cloudflare, Linux.</p></div>
+      <div class="cap"><h4>Observability &amp; quality</h4><p><b>Grafana</b>, <b>Prometheus</b>, Sentry, n8n. PHPStan at maximum level and Pest / PHPUnit enforced in CI.</p></div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="sec-top"><h2>History</h2><span class="rule"></span></div>
+
+    <div class="role">
+      <div class="role-l"><span class="when">Nov 2024 — Present</span><span class="org">WebOccult Technologies</span><p class="loc">Ahmedabad, India</p></div>
+      <div class="role-r"><h3>Tech Lead</h3><p>Lead a five-person cross-functional team and own end-to-end architecture — domain model, multi-tenancy, API contracts, CI/CD, deployment topology — for a ground-up rebuild replacing a Salesforce implementation serving 13 enterprise customers and 20,000+ end users. Also led engineering for the Japan deployment and the care robot, introduced Grafana and Prometheus observability across five servers, and built the agent workflows the team now reports through.</p></div>
+    </div>
+
+    <div class="role">
+      <div class="role-l"><span class="when">Jun 2022 — Oct 2024</span><span class="org">Enstead</span><p class="loc">Remote · Portugal-based group</p></div>
+      <div class="role-r"><h3>Technical Project Manager</h3><p>Embedded with a Portugal-based product group as hands-on technical lead, moving across products and teams as delivery priorities required. Architected a remote-support platform combining ticketing, real-time chat, video calling and on-call augmented reality — letting end customers resolve equipment issues without dispatching a field engineer. Migrated MySQL to PostgreSQL and owned cross-platform API design.</p></div>
+    </div>
+
+    <div class="role">
+      <div class="role-l"><span class="when">Jan 2019 — Jun 2022</span><span class="org">Improwised Technology</span><p class="loc">Rajkot, India</p></div>
+      <div class="role-r"><h3>Tech Lead &amp; Senior Software Engineer</h3><p>Owned an eight-year-old production scraping platform processing 500K requests per day across up to 300 pods, maintaining a ~200GB database under rolling three-month retention. Redesigned deduplication after a client invalidated the system's core identity assumption, and migrated the scraper from Python to Go.</p></div>
+    </div>
+
+    <div class="role">
+      <div class="role-l"><span class="when">Apr 2017 — Sep 2018</span><span class="org">DevRepublic</span><p class="loc">Ahmedabad, India</p></div>
+      <div class="role-r"><h3>Tech Lead &amp; Senior PHP Developer</h3><p>Led Laravel development for a social platform with integrated video chat. Built a Vue.js gift editor with server-side banner-resolution image generation.</p></div>
+    </div>
+
+    <div class="role">
+      <div class="role-l"><span class="when">Jun 2014 — Apr 2017</span><span class="org">CodeGeeks</span><p class="loc">Rajkot, India</p></div>
+      <div class="role-r"><h3>Founder</h3><p>Founded an independent software practice — e-commerce platforms, examination systems and payment integrations.</p></div>
+    </div>
+
+    <div class="role">
+      <div class="role-l"><span class="when">2012 — 2014</span><span class="org">Canvass · Improwised</span><p class="loc">Mumbai · Rajkot</p></div>
+      <div class="role-r"><h3>Earlier</h3><p>Marketing automation on Java and Struts at Canvass. First engineering role at Improwised in 2012 — a company I returned to as Tech Lead seven years later.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-top"><h2>Talks</h2><span class="rule"></span></div>
+    <div class="talks">
+      <div class="talk"><p class="tt">Level Up Your Laravel API: Structure, Testing and Other Tools</p><p class="tm">June 2025 · Simprosys, Ahmedabad<br>Laravel Ahmedabad</p></div>
+      <div class="talk"><p class="tt">Flawless CI/CD via GitHub Actions</p><p class="tm">March 2023 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+      <div class="talk"><p class="tt">Tips and Tricks for Using Laravel Efficiently</p><p class="tm">April 2022 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+      <div class="talk"><p class="tt">Introduction to Vue JS</p><p class="tm">December 2019 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+    </div>
+  </section>
+
+  <div class="contact" id="contact">
+    <h2>If any of this is the problem you have, let's talk.</h2>
+    <div class="links">
+      <a href="mailto:adiechahari@gmail.com">adiechahari@gmail.com</a>
+      <a href="https://github.com/AdiechaHK">github.com/AdiechaHK</a>
+      <a href="https://www.linkedin.com/in/harikrushna-adiecha-19434458/">LinkedIn</a>
+      <a href="https://twitter.com/HK_Adiecha">@HK_Adiecha</a>
+    </div>
+  </div>
+  <p class="afk">Away from the keyboard: table tennis, chess, IoT tinkering, pencil drawing.</p>
+
+</div>
+<script>
+function tt(){const r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')}
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.documentElement.setAttribute('data-theme','dark');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();const t=document.querySelector(a.getAttribute('href'));
+  if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+}));
+</script>
+</body>
+</html>

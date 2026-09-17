@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "subject": "Harikrushna V. Adiecha",
+    "updated": "2026-09-12",
+    "note": "Single source of truth for the ask-hk assistant. Every claim here is one Harikrushna can defend in an interview. Do not add anything that cannot be substantiated. Chunks are retrieved verbatim as grounding context; the model may only answer from them."
+  },
+  "chunks": [
+    {
+      "id": "identity",
+      "title": "Who he is",
+      "tags": ["about", "who", "intro", "summary", "bio", "overview"],
+      "text": "Harikrushna V. Adiecha is a Tech Lead at WebOccult Technologies in Ahmedabad, India, with 13+ years of software engineering experience. He builds AI systems into production environments where they have to keep working, backed by a long background in backend architecture, multi-tenant SaaS, and live-system ownership. He is open to relocation within India and strongly prefers remote work. Contact: adiechahari@gmail.com. GitHub: github.com/AdiechaHK. Site: harikrushna.dev."
+    },
+    {
+      "id": "positioning",
+      "title": "What he does and why it matters",
+      "tags": ["positioning", "ai", "why ai", "pivot", "value", "differentiator"],
+      "text": "His argument is that AI compressed implementation, not judgment. What became more valuable is deciding what to build, owning a data model, migrating a live database without breaking it, and being accountable when a system fails in production. An LLM agent pipeline is a distributed system with a nondeterministic worker, and he has already run the hard version of that. He deliberately did not retrain as an ML engineer — he would be competing against people with a decade of PyTorch — and instead pointed his existing backend and architecture skills at a new payload. He describes his work as 'not demos, things other people depend on.'"
+    },
+    {
+      "id": "work-japan",
+      "title": "Face-recognition access control, deployed in Japan",
+      "tags": ["japan", "face recognition", "computer vision", "sesame", "smart lock", "access control", "hardware", "deployment"],
+      "text": "At WebOccult in 2025 he led engineering for a production face-recognition access-control system deployed on a customer site in Japan. It integrated an in-house detection API with SESAME smart locks. He is explicit that the model itself was an in-house detection API he integrated rather than trained; his contribution was the system around it — the authorisation flow, the hardware integration, and making it dependable on a site he did not control. The hard part was getting a vision system and third-party hardware to agree on who may pass through a door, reliably, every day. Result: the system authorises 30 to 100 restricted-area entries per day in production."
+    },
+    {
+      "id": "work-agent",
+      "title": "Engineering reporting agent",
+      "tags": ["agent", "claude code", "odoo", "github", "automation", "llm workflow", "reporting", "orchestration"],
+      "text": "At WebOccult in 2025 he built a Claude Code workflow that pulls from Odoo and GitHub to assemble developer status reports and monthly client progress reports, attaching per-item evidence to every claim. He frames the design question as not 'can the model write this' but 'which judgments stay with a human' — the agent gathers and drafts, people decide. The evidence layer is the part he would defend in an interview: every line in a generated report links to the commit or task it came from, because a report nobody can verify is worse than no report. Results: developer status reports went from 30 to 45 minutes of manual collation down to about 5 minutes; monthly client progress reports went from a full working day to under 30 minutes including revisions."
+    },
+    {
+      "id": "work-robot",
+      "title": "Conversational care robot",
+      "tags": ["robot", "elder care", "voice", "speech", "stt", "tts", "latency", "llm pipeline", "prototype"],
+      "text": "At WebOccult in 2025 he delivered a conversational elder-care robot prototype running a speech-to-text to LLM to text-to-speech loop. He is clear that this is a prototype, not a shipped product. His key lesson: in voice, latency is the entire product. A pause that passes unnoticed in a chat window is a broken conversation when someone is speaking aloud to a machine and waiting for an answer."
+    },
+    {
+      "id": "work-mongo",
+      "title": "36GB MongoDB migration, live",
+      "tags": ["mongodb", "migration", "downtime", "replica set", "cutover", "database", "36gb", "production"],
+      "text": "At WebOccult in 2025 he migrated a 36GB production MongoDB onto a dedicated host. The database served 250 to 300 concurrent connections from web services, batch jobs and edge devices, and its memory consumption had begun starving co-located services. He used replica-set promotion with a scripted cutover: quiesce writers, verify sync, promote the secondary, rotate credentials, restart. He emphasises that it was scripted deliberately, because a cutover you perform by hand is a cutover you perform differently under pressure. Result: total downtime was capped at 10 seconds plus a single planned 20-minute window."
+    },
+    {
+      "id": "work-dedup",
+      "title": "Deduplication redesign after a broken data contract",
+      "tags": ["deduplication", "dedup", "data model", "md5", "hash", "api contract", "integrity", "hardest"],
+      "text": "At Improwised between 2019 and 2022 he redesigned deduplication on an eight-year-old production scraping platform. The system assumed client-supplied IDs were stable; a client began emitting inconsistent identifiers for the same business, invalidating that assumption. Rather than rebuild, he added an MD5 content hash over the business's identifying attributes as a fallback key, checked only when the primary ID misses — restoring integrity without breaking any existing client API contract. Result: eliminated 95% of duplicate business records. He rates this as his best work and the one he would most want to be asked about, because the obvious move was to rebuild and the right move was restraint."
+    },
+    {
+      "id": "work-scraper",
+      "title": "500K requests/day platform and the Go rewrite",
+      "tags": ["scraping", "500k", "go", "golang", "python", "rewrite", "performance", "pods", "scale", "throughput"],
+      "text": "At Improwised between 2019 and 2022 he owned an eight-year-old production scraping platform processing 500,000 requests per day for three major clients across up to 300 pods, maintaining a roughly 200GB database under a rolling three-month retention policy. He migrated the core scraper from Python to Go and rolled the rewrite into the live large-scale system rather than staging a parallel cutover. Result: a 10x execution-time improvement. On why Go specifically: the workload was IO-bound concurrency at high pod counts, and Go's concurrency model and single-static-binary deployment story fit the operational reality better than the Python service. The 10x was mostly execution time; the quieter win was simpler deploys."
+    },
+    {
+      "id": "role-weboccult",
+      "title": "Current role: Tech Lead at WebOccult Technologies",
+      "tags": ["weboccult", "current", "tech lead", "role", "job", "salesforce", "rebuild", "multi-tenant", "aws"],
+      "text": "Since November 2024 he has been Tech Lead at WebOccult Technologies in Ahmedabad. He leads a five-person cross-functional team covering backend, frontend, DevOps, QA and business analysis, and coordinates with AI/ML, platform and project teams across a 40-plus engineer organisation. He owns end-to-end architecture — domain and data model, multi-tenancy strategy, API contracts, CI/CD and deployment topology — for a ground-up Laravel and Flutter rebuild of a US B2B expense-reimbursement SaaS, replacing a Salesforce implementation that serves 13 enterprise customers and 20,000-plus end users, targeted for production launch in late 2026. He chose a single-database globally-scoped multi-tenancy model over database-per-tenant after evaluating both, satisfying cross-tenant reporting while avoiding per-customer schema management overhead. He re-architected a third-party insurance verification integration from status polling to a webhook-driven event flow, eliminating per-API-call charges and latency. He selected AWS App Runner over EC2 for the web tier with immutable images in ECR, then ran SQS queue workers from that same image on the client's existing EC2 instance rather than provisioning ECS. He introduced Grafana and Prometheus observability across five on-premise servers with alerting routed through n8n, and established PHPStan at maximum level plus mandatory Pest test coverage in CI on the greenfield codebase."
+    },
+    {
+      "id": "role-enstead",
+      "title": "Enstead — embedded technical lead, Portugal group",
+      "tags": ["enstead", "portugal", "remote", "embedded", "customer facing", "augmented reality", "remote support", "postgresql"],
+      "text": "From June 2022 to October 2024 he was Technical Project Manager at Enstead, working remotely as a hands-on technical lead embedded with a Portugal-based Smart Augmented Operations product group, moving across products and teams as delivery priorities required. He architected and delivered a remote-support platform combining ticketing, real-time chat, video calling and on-call augmented reality, enabling end customers to resolve equipment issues without dispatching a field engineer. He migrated the platform's primary datastore from MySQL to PostgreSQL and modernised the Laravel stack across major versions within a planned maintenance window. He owned API design and lifecycle for cross-platform synchronisation between mobile clients, web frontend and backend services. He also built reusable private payment packages powering checkout across four independently branded cosmetics storefronts on a shared Laravel backend, and designed the bidding engine for a wine e-commerce and live-auction platform, resolving concurrent bid handling and auction-close race conditions."
+    },
+    {
+      "id": "role-improwised",
+      "title": "Improwised Technology — Tech Lead and Senior Engineer",
+      "tags": ["improwised", "rajkot", "scraping", "tech lead", "iovox", "marchex"],
+      "text": "From January 2019 to June 2022 he was Tech Lead and Senior Software Engineer at Improwised Technology in Rajkot, where he owned the 500K requests/day scraping platform, redesigned deduplication, and migrated the core scraper from Python to Go. He also engineered a Laravel integration API that normalised structured client input, routed it to downstream services and returned standardised responses, including evaluation and integration of third-party virtual number and call providers such as iovox and Marchex. Improwised was also where he had his first engineering role, from June to October 2012 — he returned to the company as Tech Lead seven years later."
+    },
+    {
+      "id": "role-earlier",
+      "title": "Earlier roles",
+      "tags": ["devrepublic", "codegeeks", "canvass", "founder", "early career", "java", "vue"],
+      "text": "From April 2017 to September 2018 he was Tech Lead and Senior PHP Developer at DevRepublic in Ahmedabad, leading Laravel development for a social platform with integrated video chat and building a Vue.js gift editor with server-side banner-resolution image generation. From June 2014 to April 2017 he founded CodeGeeks in Rajkot, an independent software practice building e-commerce platforms, examination systems and payment integrations. From April 2013 to May 2014 he was a Software Design Engineer at Canvass in Mumbai working on an all-in-one marketing platform — drip campaigns, email editor, themes and HTML email uploads — on Java, Struts, Hibernate and Heroku. His first engineering role was at Improwised Technology in Rajkot from June to October 2012."
+    },
+    {
+      "id": "stack",
+      "title": "Technical stack",
+      "tags": ["stack", "skills", "tech", "languages", "tools", "aws", "database", "framework"],
+      "text": "AI systems: LLM pipelines, agent workflows and orchestration, OpenAI APIs, Claude Code and custom agent commands, speech-to-text and text-to-speech pipelines, computer vision integration. Architecture: multi-tenant SaaS, event-driven and queue-based systems, legacy modernisation, domain and data modelling, live and cross-engine migration, high availability, design patterns, SOLID. Backend: PHP, Laravel, Python, Go, Node.js, FastAPI, REST API design, JWT authentication, role-based authorisation. Databases: PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch — schema design, query optimisation, replication. Cloud and DevOps: AWS including App Runner, ECR, S3, SQS and RDS; DigitalOcean, Docker, GitHub Actions, GitLab, Nginx, Apache, Cloudflare, Linux. Observability and quality: Grafana, Prometheus, Sentry, n8n, PHPStan, Pest, PHPUnit, automated testing in CI. Leadership: technical direction, architecture and code review, mentoring, sprint planning, estimation, stakeholder communication."
+    },
+    {
+      "id": "depth-honesty",
+      "title": "Where he is deep versus merely competent",
+      "tags": ["honest", "weakness", "gap", "kubernetes", "depth", "limitations", "not good at"],
+      "text": "He is deepest in Laravel and PHP, backend architecture, API and database design, and production ownership. The last three years have been as much Python, Go and infrastructure. He has used Kubernetes but has not owned it, and says so directly rather than claiming it. He integrated an in-house computer vision detection API rather than training models himself. He is not an ML researcher and does not present himself as one — his AI work is systems engineering around models, not model development."
+    },
+    {
+      "id": "looking",
+      "title": "What he is looking for",
+      "tags": ["looking", "hire", "hiring", "next", "opportunity", "remote", "fde", "forward deployed", "available", "job search"],
+      "text": "He is looking for forward-deployed engineering, AI platform, or agent infrastructure roles — work where an AI system has to survive contact with real users, real hardware and real operations. He frames this as continuity rather than a pivot: own a system end to end, understand the domain well enough to model it, be accountable when it is live. Remote is a strong preference; he is based in Ahmedabad and open to relocation within India. He is drawn to problems that have no established playbook, which is much of why forward-deployed work appeals to him, and he treats the customer-facing half of engineering as a feature rather than a cost. Best contact route: adiechahari@gmail.com."
+    },
+    {
+      "id": "talks",
+      "title": "Talks and community",
+      "tags": ["talks", "speaking", "meetup", "laravel ahmedabad", "laravel rajkot", "community", "conference"],
+      "text": "He speaks at Laravel Ahmedabad and Laravel Rajkot community meetups. Talks given: 'Level Up Your Laravel API: Structure, Testing and Other Tools' in June 2025 at Simprosys, Ahmedabad; 'Flawless CI/CD via GitHub Actions' in March 2023 at RKU City Campus, Rajkot; 'Tips and Tricks for Using Laravel Efficiently' in April 2022 at RKU City Campus, Rajkot; and 'Introduction to Vue JS' in December 2019 at RKU City Campus, Rajkot. He says speaking is also how he discovered he likes the customer-facing half of engineering."
+    },
+    {
+      "id": "personal",
+      "title": "Outside work",
+      "tags": ["hobby", "personal", "chess", "table tennis", "drawing", "iot", "free time"],
+      "text": "Outside work he plays table tennis and chess, tinkers with IoT projects, and draws in pencil. He notes the IoT habit is not unrelated to his professional work — a lot of his comfort with hardware that misbehaves came from breaking things at home first."
+    },
+    {
+      "id": "contact",
+      "title": "How to reach him",
+      "tags": ["contact", "email", "linkedin", "github", "twitter", "reach"],
+      "text": "Email adiechahari@gmail.com — this gets the fastest reply. GitHub: github.com/AdiechaHK. LinkedIn: linkedin.com/in/harikrushna-adiecha-19434458. Twitter: @HK_Adiecha. Website: harikrushna.dev. He is based in Ahmedabad, Gujarat, India, in the IST timezone (UTC+5:30)."
+    }
+  ]
+}

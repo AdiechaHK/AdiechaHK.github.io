@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design options — harikrushna.dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfa;--card:#fff;--fg:#12130f;--fg2:#55574e;--fg3:#8b8d83;--line:#e5e5e0;--pop:#2f5bea;--gold:#b4690e}
+@media(prefers-color-scheme:dark){:root{--bg:#0c0d0a;--card:#141510;--fg:#f2f2ee;--fg2:#b0b2a6;--fg3:#7b7d72;--line:#26271f;--pop:#7d9bff;--gold:#e8a33d}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:880px;margin:0 auto;padding:60px 28px 90px}
+h1{font-size:31px;font-weight:600;letter-spacing:-.024em;margin-bottom:10px}
+.sub{color:var(--fg2);margin-bottom:44px;max-width:62ch}
+.grp{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg3);margin:0 0 8px;display:flex;align-items:center;gap:12px}
+.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+.grp-note{font-size:13.5px;color:var(--fg3);margin-bottom:18px;max-width:64ch}
+.grp.mt{margin-top:40px}
+.opt{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:22px 24px;margin-bottom:12px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--pop);transform:translateY(-1px)}
+.opt-h{display:flex;align-items:baseline;gap:11px;margin-bottom:7px;flex-wrap:wrap}
+.opt-h h2{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pop);border:1px solid var(--line);padding:2px 8px;border-radius:99px}
+.tag.g{color:var(--gold)}
+.opt p{color:var(--fg2);font-size:14.5px;max-width:70ch}
+.opt .best{display:block;margin-top:9px;font-size:13px;color:var(--fg3)}
+.opt .best b{color:var(--fg2);font-weight:600}
+.note{margin-top:38px;font-size:13.5px;color:var(--fg3);border-top:1px solid var(--line);padding-top:20px;max-width:66ch}
+code{font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ten directions</h1>
+  <p class="sub">Same content throughout — the six systems, the capabilities, the history, the talks. What changes is the idea the page is built on. Every one is a standalone file: pick one and it becomes the root <code>index.html</code>.</p>
+
+  <p class="grp">The interactive one</p>
+  <p class="grp-note">Your idea. A different category from the rest — a page you use rather than scroll.</p>
+
+  <a class="opt" href="chat.html">
+    <div class="opt-h"><h2>Ask HK</h2><span class="tag g">Most memorable</span></div>
+    <p>The site is a chat. Command chips (<code>/work</code>, <code>/experience</code>, <code>/stack</code>…) type themselves into the input and send, then the answer streams back — prose, stat tiles, work cards. Visitors can also just type a question: <em>why Go</em>, <em>what was the hardest problem</em>, <em>tell me about Japan</em>. Each answer offers follow-ups.</p>
+    <span class="best"><b>Why it works:</b> you're positioning as someone who builds AI systems, and the page is one. It's honest about being pattern-matched notes rather than a live model — which is itself the kind of judgement the job is about.</span>
+  </a>
+
+  <p class="grp mt">My three picks</p>
+  <p class="grp-note">Built from a concept rather than a layout. These are the ones I'd argue for.</p>
+
+  <a class="opt" href="uptime.html">
+    <div class="opt-h"><h2>Still Running</h2><span class="tag">My favourite</span></div>
+    <p>The page is a status page. It opens with a green dot and <b>"All systems operational"</b>, and every system you've built is a service with a status badge and an uptime bar. Calm, spacious, almost no decoration — the confidence comes from the format, not from effects.</p>
+    <span class="best"><b>Why:</b> your best stories are all about things that didn't break. This makes that the entire argument, and it's the one page here a hiring manager would remember by its idea rather than its colours.</span>
+  </a>
+
+  <a class="opt" href="fieldwork.html">
+    <div class="opt-h"><h2>Fieldwork</h2><span class="tag g">Best for FDE</span></div>
+    <p>Warm paper, serif headlines, a "sites worked" panel — Japan, Portugal, Rajkot, Ahmedabad — and each system written up as a field report: <em>Situation / What I did / Outcome</em>, with a rotated stamp in the margin.</p>
+    <span class="best"><b>Why:</b> it's built on the thing that actually makes you an FDE candidate — that the work happened in other people's buildings. No other page here says that, and this one says nothing else.</span>
+  </a>
+
+  <a class="opt" href="narrative.html">
+    <div class="opt-h"><h2>One Paragraph</h2><span class="tag">Most confident</span></div>
+    <p>Your whole career as a single large paragraph. Six phrases in it are underlined; click one and the system behind it opens below. No hero, no cards, no grid — just the sentence and what's underneath it.</p>
+    <span class="best"><b>Why:</b> it takes nerve, and it only works if the writing is good. Yours is. The risk is that a recruiter skimming for keywords finds a wall of prose.</span>
+  </a>
+
+  <p class="grp mt">With a signature device</p>
+  <p class="grp-note">Closer to the two sites you sent me — each carries one memorable visual idea.</p>
+
+  <a class="opt" href="ambient.html">
+    <div class="opt-h"><h2>Ambient</h2><span class="tag">Closest to your refs</span></div>
+    <p>Dark and atmospheric — a drifting field of your own vocabulary (Japan, SQS, 36GB, Grafana, replica set) behind a big glowing name, a terminal chip that types your roles, count-up stats, fixed social rail. The Nainesh energy, in amber rather than borrowed red.</p>
+    <span class="best"><b>Device:</b> the ambient keyword field.</span>
+  </a>
+
+  <a class="opt" href="blueprint.html">
+    <div class="opt-h"><h2>Blueprint</h2></div>
+    <p>The page is an engineering drawing. Graph-paper ground, a bordered sheet with corner nodes, a title block with revision number, a spec strip, dimension lines, each system as FIG. 01–06. History becomes a revision table.</p>
+    <span class="best"><b>Device:</b> technical drafting. Quietly argues you're an architect.</span>
+  </a>
+
+  <a class="opt" href="signal.html">
+    <div class="opt-h"><h2>Signal</h2></div>
+    <p>An animated pipeline runs through the hero — mic → speech-to-text → LLM → speech, with the signal flowing along it. Every work card carries its own small flow diagram.</p>
+    <span class="best"><b>Device:</b> data flow made visible. Thematically yours — you build pipelines.</span>
+  </a>
+
+  <p class="grp mt">Quieter, typographic</p>
+  <p class="grp-note">The first batch. Restrained and safe; the content does all the work.</p>
+
+  <a class="opt" href="casestudy.html">
+    <div class="opt-h"><h2>Case study</h2></div>
+    <p>Bold opening claim, four hard numbers under it, each system as problem → approach → result. Puts the evidence where a hiring manager skims.</p>
+    <span class="best"><b>Strongest for:</b> applications and recruiters deciding in ninety seconds.</span>
+  </a>
+
+  <a class="opt" href="editorial.html">
+    <div class="opt-h"><h2>Editorial</h2></div>
+    <p>Serif, single column, generous measure. Work entries become short pieces of writing about decisions rather than bullet lists.</p>
+    <span class="best"><b>Strongest for:</b> signalling that you think and communicate clearly.</span>
+  </a>
+
+  <a class="opt" href="terminal.html">
+    <div class="opt-h"><h2>Systems</h2></div>
+    <p>Monospace throughout, labelled records, a metric band, log-style history. Highest information density of the nine.</p>
+    <span class="best"><b>Strongest for:</b> engineering audiences — though it's the most common genre, so the least differentiating.</span>
+  </a>
+
+  <a class="opt" href="theme-lab.html" style="border-style:dashed">
+    <div class="opt-h"><h2>Theme Lab</h2><span class="tag">Tool</span></div>
+    <p>Not a design — a live editor for the chat theme. Colour pickers for every token on the left, the real page on the right updating as you drag. Six starting palettes, WCAG contrast readout, and a Copy CSS button that gives you the block to paste back.</p>
+  </a>
+
+  <p class="note">If one is close but not right, say which and what's off. Mixing is easy — Fieldwork's field-report structure inside Still Running's status framing would work, for instance.</p>
+</div>
+</body>
+</html>

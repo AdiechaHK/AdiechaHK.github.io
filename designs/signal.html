@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harikrushna V. Adiecha — Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090c; --bg2:#0c1015; --card:#0e1319; --card2:#131a22;
+  --fg:#e8eef5; --fg2:#93a3b4; --fg3:#57687a;
+  --line:#1a222c; --line2:#232e3a;
+  --acc:#2dd4a7; --acc2:#38bdf8; --acc-glow:rgba(45,212,167,.5);
+  --warm:#fbbf24;
+}
+:root[data-theme="light"]{
+  --bg:#f7f9fb; --bg2:#eef2f6; --card:#ffffff; --card2:#f4f7fa;
+  --fg:#0b1116; --fg2:#4a5b6b; --fg3:#8195a6;
+  --line:#dee6ed; --line2:#cbd7e1;
+  --acc:#0d9373; --acc2:#0284c7; --acc-glow:rgba(13,147,115,.3);
+  --warm:#b45309;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);overflow-x:hidden;
+  font-family:"Space Grotesk",system-ui,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"JetBrains Mono",monospace}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+/* scroll progress */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));box-shadow:0 0 12px var(--acc-glow)}
+
+/* ambient grid */
+.grid-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 20%,transparent 75%);
+}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1120px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.logo{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:14px;color:var(--fg)}
+.logo b{color:var(--acc)}
+.nav-in .sp{flex:1}
+.nav-in a{font-size:13.5px;color:var(--fg3);transition:color .15s}
+.nav-in a:hover{color:var(--fg)}
+.tgl{background:var(--card);border:1px solid var(--line2);color:var(--fg3);width:32px;height:32px;
+  border-radius:50%;cursor:pointer;font-size:13px;display:grid;place-items:center}
+.tgl:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ===== HERO with signal device ===== */
+.hero{padding:74px 0 60px;position:relative}
+.tagchip{
+  display:inline-flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace;
+  font-size:11.5px;letter-spacing:.05em;color:var(--acc);
+  border:1px solid color-mix(in srgb,var(--acc) 30%,transparent);
+  background:color-mix(in srgb,var(--acc) 8%,transparent);
+  padding:6px 13px;border-radius:99px;margin-bottom:26px;
+}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pl 2s ease-in-out infinite}
+@keyframes pl{0%,100%{box-shadow:0 0 0 0 var(--acc-glow)}50%{box-shadow:0 0 0 6px transparent}}
+
+h1{font-size:clamp(40px,7.6vw,80px);font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:22px}
+h1 .l2{
+  display:block;
+  background:linear-gradient(96deg,var(--acc),var(--acc2) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lede{font-size:18.5px;line-height:1.68;color:var(--fg2);max-width:60ch;margin-bottom:34px}
+.lede b{color:var(--fg);font-weight:600}
+
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.btn{padding:11px 22px;border-radius:99px;font-size:14.5px;font-weight:500;transition:.18s;border:1px solid transparent}
+.btn.p{background:var(--acc);color:#04120d;box-shadow:0 4px 26px -6px var(--acc-glow)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 8px 32px -6px var(--acc-glow)}
+.btn.s{border-color:var(--line2);color:var(--fg2)}
+.btn.s:hover{border-color:var(--acc);color:var(--acc)}
+
+/* the signal pipeline device */
+.signal{
+  border:1px solid var(--line);border-radius:14px;background:var(--card);
+  padding:26px 24px 20px;position:relative;overflow:hidden;
+}
+.signal::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 120px at 20% 0%,color-mix(in srgb,var(--acc) 7%,transparent),transparent 70%);pointer-events:none}
+.sig-h{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.sig-h .t{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--fg3)}
+.sig-h .live{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--acc);display:flex;align-items:center;gap:7px}
+.sig-svg{width:100%;height:96px;display:block;overflow:visible}
+.node-lbl{font-family:"JetBrains Mono",monospace;font-size:10.5px;fill:var(--fg3);letter-spacing:.04em}
+.node-c{fill:var(--card2);stroke:var(--line2);stroke-width:1.5}
+.node-c.on{stroke:var(--acc)}
+.path-l{stroke:var(--line2);stroke-width:1.5;fill:none}
+.path-a{stroke:var(--acc);stroke-width:1.5;fill:none;stroke-dasharray:5 9;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.spark{fill:var(--acc)}
+
+/* metric strip */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:14px}
+.m{background:var(--card);padding:22px 20px;position:relative;transition:background .18s}
+.m:hover{background:var(--card2)}
+.m .v{font-size:29px;font-weight:700;letter-spacing:-.03em;line-height:1;
+  background:linear-gradient(180deg,var(--fg),var(--fg2));-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.m .k{font-size:12.5px;color:var(--fg3);margin-top:8px;line-height:1.45}
+
+/* sections */
+section{padding:76px 0;position:relative}
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap}
+.sh .n{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--acc)}
+.sh h2{font-size:27px;font-weight:600;letter-spacing:-.025em}
+.sh .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent);min-width:30px}
+
+/* work cards */
+.wk{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:28px;margin-bottom:14px;position:relative;overflow:hidden;transition:.2s;
+}
+.wk::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--acc);
+  transform:scaleY(0);transform-origin:top;transition:transform .3s ease}
+.wk:hover{border-color:var(--line2);transform:translateY(-2px)}
+.wk:hover::after{transform:scaleY(1)}
+.wk-h{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+.wk-h h3{font-size:21px;font-weight:600;letter-spacing:-.022em;line-height:1.3;max-width:30ch}
+.wk-h .w{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--fg3);white-space:nowrap;padding-top:5px}
+
+/* mini flow inside cards */
+.flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:18px}
+.fnode{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--fg2);
+  border:1px solid var(--line2);background:var(--card2);padding:5px 11px;border-radius:6px;white-space:nowrap}
+.farr{width:26px;height:1px;background:var(--line2);position:relative;flex:none}
+.farr::after{content:"";position:absolute;right:0;top:-2.5px;border-left:5px solid var(--line2);
+  border-top:3px solid transparent;border-bottom:3px solid transparent}
+.wk p{font-size:15px;line-height:1.68;color:var(--fg2);max-width:76ch}
+.res{
+  margin-top:18px;display:flex;gap:12px;align-items:flex-start;
+  background:color-mix(in srgb,var(--acc) 7%,transparent);
+  border:1px solid color-mix(in srgb,var(--acc) 20%,transparent);
+  border-radius:10px;padding:14px 16px;
+}
+.res .a{color:var(--acc);font-family:"JetBrains Mono",monospace;font-size:13px;flex:none;line-height:1.5}
+.res p{font-size:14.5px;color:var(--fg);font-weight:500;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chips span{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--fg3);
+  border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+
+/* stack */
+.stk{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.stk > div{background:var(--card);padding:24px;transition:background .18s}
+.stk > div:hover{background:var(--card2)}
+.stk h4{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.stk p{font-size:14px;color:var(--fg2);line-height:1.65}
+.stk p b{color:var(--fg);font-weight:600}
+
+/* timeline */
+.tl{position:relative;padding-left:28px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(180deg,var(--acc),var(--line2) 30%,var(--line2))}
+.ti{position:relative;padding-bottom:30px}
+.ti:last-child{padding-bottom:0}
+.ti::before{content:"";position:absolute;left:-28px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line2)}
+.ti.now::before{border-color:var(--acc);background:var(--acc);box-shadow:0 0 0 4px var(--acc-glow)}
+.ti .w{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--fg3)}
+.ti h3{font-size:17px;font-weight:600;margin:3px 0 1px;letter-spacing:-.015em}
+.ti .o{font-size:13.5px;color:var(--acc);margin-bottom:8px}
+.ti p{font-size:14.5px;color:var(--fg2);line-height:1.68;max-width:76ch}
+
+/* talks */
+.tk{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.tkc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;transition:.18s}
+.tkc:hover{border-color:var(--acc);transform:translateY(-2px)}
+.tkc .t{font-size:14.5px;font-weight:500;line-height:1.42;margin-bottom:9px}
+.tkc .m{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--fg3);line-height:1.55}
+
+/* contact */
+.ct{border-top:1px solid var(--line);padding:66px 0 30px;display:flex;justify-content:space-between;
+  gap:30px;align-items:flex-end;flex-wrap:wrap}
+.ct h2{font-size:clamp(26px,4.2vw,40px);font-weight:600;letter-spacing:-.032em;line-height:1.13;max-width:15ch}
+.ct .ll{display:flex;flex-direction:column;gap:9px}
+.ct .ll a{font-family:"JetBrains Mono",monospace;font-size:13.5px;color:var(--fg2);transition:.15s}
+.ct .ll a:hover{color:var(--acc);transform:translateX(3px)}
+footer{padding:0 0 60px;font-size:13px;color:var(--fg3)}
+
+@media(max-width:700px){
+  .wrap,.nav-in{padding-left:20px;padding-right:20px}
+  .wk{padding:22px}
+  .hero{padding-top:48px}
+  .nav-in a:not(.logo){display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-in">
+    <span class="logo">HK<b>/</b>adiecha</span>
+    <span class="sp"></span>
+    <a href="#work">Work</a><a href="#stack">Stack</a><a href="#history">History</a><a href="#contact">Contact</a>
+    <button class="tgl" onclick="tt()" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="tagchip"><span class="pulse"></span>AI systems in production · 13+ years · Ahmedabad</span>
+    <h1>Harikrushna<span class="l2">Adiecha</span></h1>
+    <p class="lede">
+      I take AI systems into the places they have to keep working — a face-recognition system
+      authorising entries in a Japanese facility, a speech-to-LLM-to-speech loop in a care robot,
+      an agent workflow the team now reports through. <b>Not demos. Things people depend on</b>,
+      which is a different engineering problem entirely.
+    </p>
+    <div class="cta">
+      <a class="btn p" href="#work">See the systems</a>
+      <a class="btn s" href="mailto:adiechahari@gmail.com">Get in touch</a>
+    </div>
+
+    <div class="signal">
+      <div class="sig-h">
+        <span class="t">Care robot — conversational loop</span>
+        <span class="live"><span class="pulse"></span>latency is the product</span>
+      </div>
+      <svg class="sig-svg" viewBox="0 0 900 96" preserveAspectRatio="xMidYMid meet" aria-label="Speech to text, to language model, to speech, looping back">
+        <path class="path-l" d="M80 44 H250"/>
+        <path class="path-a" d="M80 44 H250"/>
+        <path class="path-l" d="M330 44 H520"/>
+        <path class="path-a" d="M330 44 H520"/>
+        <path class="path-l" d="M600 44 H790"/>
+        <path class="path-a" d="M600 44 H790"/>
+        <path class="path-l" d="M820 44 q40 0 40 20 v6 q0 14 -20 14 H70 q-20 0 -20 -14 v-6 q0 -20 30 -20" opacity=".45"/>
+        <circle class="node-c on" cx="46" cy="44" r="17"/>
+        <circle class="node-c on" cx="290" cy="44" r="20"/>
+        <circle class="node-c on" cx="560" cy="44" r="20"/>
+        <circle class="node-c on" cx="820" cy="44" r="17"/>
+        <circle class="spark" cx="46" cy="44" r="4"/>
+        <circle class="spark" cx="290" cy="44" r="4"/>
+        <circle class="spark" cx="560" cy="44" r="4"/>
+        <circle class="spark" cx="820" cy="44" r="4"/>
+        <text class="node-lbl" x="46" y="80" text-anchor="middle">mic</text>
+        <text class="node-lbl" x="290" y="80" text-anchor="middle">speech→text</text>
+        <text class="node-lbl" x="560" y="80" text-anchor="middle">LLM</text>
+        <text class="node-lbl" x="820" y="80" text-anchor="middle">text→speech</text>
+      </svg>
+    </div>
+
+    <div class="strip">
+      <div class="m"><span class="v">500K</span><span class="k">requests/day platform owned, up to 300 pods</span></div>
+      <div class="m"><span class="v">10 sec</span><span class="k">downtime migrating 36GB of live data</span></div>
+      <div class="m"><span class="v">20,000+</span><span class="k">end users on the rebuild I architect</span></div>
+      <div class="m"><span class="v">95%</span><span class="k">duplicate records killed by one redesign</span></div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="sh"><span class="n">01</span><h2>Selected work</h2><span class="ln"></span></div>
+
+    <article class="wk">
+      <div class="wk-h"><h3>Face-recognition access control, deployed in Japan</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <div class="flow">
+        <span class="fnode">camera</span><span class="farr"></span>
+        <span class="fnode">detection API</span><span class="farr"></span>
+        <span class="fnode">auth decision</span><span class="farr"></span>
+        <span class="fnode">SESAME lock</span>
+      </div>
+      <p>Led engineering for a production access-control system on a customer site in Japan, integrating an in-house detection API with SESAME smart locks. The model was never the hard part — getting a vision system and third-party hardware to agree on who may pass through a door, reliably, every day, in a building I did not control, was.</p>
+      <div class="res"><span class="a">→</span><p>Authorising 30–100 restricted-area entries per day in production.</p></div>
+      <div class="chips"><span>computer vision</span><span>hardware integration</span><span>on-site deployment</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>An agent that writes the reports nobody wanted to write</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <div class="flow">
+        <span class="fnode">Odoo</span><span class="farr"></span>
+        <span class="fnode">agent</span><span class="farr"></span>
+        <span class="fnode">evidence-linked draft</span><span class="farr"></span>
+        <span class="fnode">human decides</span>
+      </div>
+      <p>A Claude Code workflow pulling from Odoo and GitHub to assemble developer status reports and monthly client progress reports, with per-item evidence attached to every claim. The real design question was never "can the model write this" — it was which judgments stay with a human. The agent gathers and drafts; people decide.</p>
+      <div class="res"><span class="a">→</span><p>Status reports 30–45 min → ~5 min. Monthly client reports: a full working day → under 30 minutes, including revisions.</p></div>
+      <div class="chips"><span>agent orchestration</span><span>LLM tooling</span><span>Odoo + GitHub APIs</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>A care robot that had to answer fast enough to feel like conversation</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <div class="flow">
+        <span class="fnode">speech→text</span><span class="farr"></span>
+        <span class="fnode">LLM</span><span class="farr"></span>
+        <span class="fnode">text→speech</span>
+      </div>
+      <p>An elder-care robot prototype running a speech-to-text → LLM → text-to-speech loop. Latency is the entire product here. A pause that passes unnoticed in a chat window is a broken conversation when someone is speaking aloud to a machine and waiting for an answer.</p>
+      <div class="chips"><span>STT / TTS</span><span>LLM pipeline</span><span>latency engineering</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>Moving 36GB of production data with the lights on</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <div class="flow">
+        <span class="fnode">quiesce writers</span><span class="farr"></span>
+        <span class="fnode">verify sync</span><span class="farr"></span>
+        <span class="fnode">promote secondary</span><span class="farr"></span>
+        <span class="fnode">rotate + restart</span>
+      </div>
+      <p>A production MongoDB at 250–300 concurrent connections — web services, batch jobs, edge devices — had begun starving the services sharing its host. I moved it onto dedicated infrastructure by replica-set promotion with a scripted cutover. Scripted, because a cutover you perform by hand is a cutover you perform differently under pressure.</p>
+      <div class="res"><span class="a">→</span><p>Ten seconds of total downtime, plus one planned twenty-minute window.</p></div>
+      <div class="chips"><span>MongoDB</span><span>live migration</span><span>replica sets</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>When the client broke the contract our data model rested on</h3><span class="w">IMPROWISED · 2019–2022</span></div>
+      <div class="flow">
+        <span class="fnode">client ID</span><span class="farr"></span>
+        <span class="fnode">miss?</span><span class="farr"></span>
+        <span class="fnode">MD5 content hash</span><span class="farr"></span>
+        <span class="fnode">match</span>
+      </div>
+      <p>An eight-year-old scraping platform assumed client-supplied IDs were stable. A client began emitting inconsistent identifiers for the same business and the assumption collapsed underneath us. Rather than rebuild, I added an MD5 content hash over the business's identifying attributes as a fallback key, checked only when the primary ID misses — restoring integrity without breaking a single existing client API contract.</p>
+      <div class="res"><span class="a">→</span><p>Eliminated 95% of duplicate business records.</p></div>
+      <div class="chips"><span>deduplication</span><span>data modeling</span><span>backwards compatibility</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>500K requests a day, and a rewrite shipped into live traffic</h3><span class="w">IMPROWISED · 2019–2022</span></div>
+      <div class="flow">
+        <span class="fnode">Python scraper</span><span class="farr"></span>
+        <span class="fnode">Go rewrite</span><span class="farr"></span>
+        <span class="fnode">rolled into live system</span>
+      </div>
+      <p>Owned a scraping platform processing 500K requests per day across up to 300 pods against a ~200GB database on rolling three-month retention. Migrated the core scraper from Python to Go and rolled the rewrite into the running large-scale system rather than staging a parallel cutover.</p>
+      <div class="res"><span class="a">→</span><p>10× execution-time improvement, shipped into production traffic.</p></div>
+      <div class="chips"><span>Go</span><span>Python</span><span>high-throughput systems</span></div>
+    </article>
+  </section>
+
+  <section id="stack">
+    <div class="sh"><span class="n">02</span><h2>Stack</h2><span class="ln"></span></div>
+    <div class="stk">
+      <div><h4>AI systems</h4><p><b>LLM pipelines</b>, <b>agent workflows</b> and orchestration, OpenAI APIs, Claude Code, speech-to-text and text-to-speech loops, computer vision integration.</p></div>
+      <div><h4>Architecture</h4><p><b>Multi-tenant SaaS</b>, <b>event-driven</b> and queue-based systems, legacy modernization, domain and data modeling, live migration, high availability.</p></div>
+      <div><h4>Backend</h4><p><b>Python</b>, <b>PHP / Laravel</b>, Go, FastAPI, Node.js. REST API design, JWT auth, role-based authorization.</p></div>
+      <div><h4>Data</h4><p><b>PostgreSQL</b>, <b>MySQL</b>, MongoDB, Redis, Elasticsearch. Schema design, query optimization, replication, cross-engine migration.</p></div>
+      <div><h4>Cloud</h4><p><b>AWS</b> — App Runner, ECR, S3, SQS, RDS. Docker, GitHub Actions, Nginx, Cloudflare, Linux.</p></div>
+      <div><h4>Observability</h4><p><b>Grafana</b>, <b>Prometheus</b>, Sentry, n8n. PHPStan at maximum level and Pest / PHPUnit enforced in CI.</p></div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="sh"><span class="n">03</span><h2>History</h2><span class="ln"></span></div>
+    <div class="tl">
+      <div class="ti now">
+        <p class="w">Nov 2024 — Present</p>
+        <h3>Tech Lead</h3>
+        <p class="o">WebOccult Technologies · Ahmedabad</p>
+        <p>Lead a five-person cross-functional team and own end-to-end architecture — domain model, multi-tenancy, API contracts, CI/CD, deployment topology — for a ground-up rebuild replacing a Salesforce implementation serving 13 enterprise customers and 20,000+ end users. Led engineering for the Japan deployment and the care robot, introduced Grafana and Prometheus observability across five servers, and built the agent workflows the team now reports through.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Jun 2022 — Oct 2024</p>
+        <h3>Technical Project Manager</h3>
+        <p class="o">Enstead · Remote, Portugal-based group</p>
+        <p>Embedded with a Portugal-based product group as hands-on technical lead, moving across products as delivery priorities required. Architected a remote-support platform combining ticketing, real-time chat, video and on-call augmented reality — letting customers resolve equipment issues without dispatching a field engineer. Migrated MySQL to PostgreSQL, owned cross-platform API design.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Jan 2019 — Jun 2022</p>
+        <h3>Tech Lead &amp; Senior Software Engineer</h3>
+        <p class="o">Improwised Technology · Rajkot</p>
+        <p>Owned an eight-year-old production scraping platform: 500K requests/day, up to 300 pods, ~200GB database on rolling three-month retention. Redesigned deduplication after a client invalidated the system's core identity assumption; migrated the scraper from Python to Go.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Apr 2017 — Sep 2018</p>
+        <h3>Tech Lead &amp; Senior PHP Developer</h3>
+        <p class="o">DevRepublic · Ahmedabad</p>
+        <p>Led Laravel development for a social platform with integrated video chat. Built a Vue.js gift editor with server-side banner-resolution image generation.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Jun 2014 — Apr 2017</p>
+        <h3>Founder</h3>
+        <p class="o">CodeGeeks · Rajkot</p>
+        <p>Founded an independent software practice — e-commerce platforms, examination systems, payment integrations.</p>
+      </div>
+      <div class="ti">
+        <p class="w">2012 — 2014</p>
+        <h3>Earlier</h3>
+        <p class="o">Canvass, Mumbai · Improwised Technology, Rajkot</p>
+        <p>Marketing automation on Java and Struts at Canvass. First engineering role at Improwised in 2012 — a company I returned to as Tech Lead seven years later.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><span class="n">04</span><h2>Talks</h2><span class="ln"></span></div>
+    <div class="tk">
+      <div class="tkc"><p class="t">Level Up Your Laravel API: Structure, Testing and Other Tools</p><p class="m">JUN 2025 · Simprosys, Ahmedabad<br>Laravel Ahmedabad</p></div>
+      <div class="tkc"><p class="t">Flawless CI/CD via GitHub Actions</p><p class="m">MAR 2023 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+      <div class="tkc"><p class="t">Tips and Tricks for Using Laravel Efficiently</p><p class="m">APR 2022 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+      <div class="tkc"><p class="t">Introduction to Vue JS</p><p class="m">DEC 2019 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+    </div>
+  </section>
+
+  <div class="ct" id="contact">
+    <h2>If that's the problem you have, let's talk.</h2>
+    <div class="ll">
+      <a href="mailto:adiechahari@gmail.com">adiechahari@gmail.com</a>
+      <a href="https://github.com/AdiechaHK">github.com/AdiechaHK</a>
+      <a href="https://www.linkedin.com/in/harikrushna-adiecha-19434458/">linkedin</a>
+      <a href="https://twitter.com/HK_Adiecha">@HK_Adiecha</a>
+    </div>
+  </div>
+  <footer>Away from the keyboard: table tennis, chess, IoT tinkering, pencil drawing.</footer>
+
+</div>
+
+<script>
+function tt(){const r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')}
+if(window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.documentElement.setAttribute('data-theme','light');
+}
+// scroll progress
+const pb=document.getElementById('prog');
+addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  pb.style.width=(h>0?(scrollY/h)*100:0)+'%';
+},{passive:true});
+// count-up metrics
+const red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!red){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting||e.target.dataset.done)return;
+    e.target.dataset.done=1;
+    const el=e.target, txt=el.textContent, m=txt.match(/[\d.]+/);
+    if(!m)return;
+    const target=parseFloat(m[0]), pre=txt.slice(0,m.index), post=txt.slice(m.index+m[0].length);
+    const dec=(m[0].split('.')[1]||'').length;
+    let s=null;
+    const step=t=>{ if(!s)s=t; const p=Math.min((t-s)/900,1);
+      const v=(target*(1-Math.pow(1-p,3))).toFixed(dec);
+      el.textContent=pre+v+post; if(p<1)requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }),{threshold:.6});
+  document.querySelectorAll('.m .v').forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Lab — chat.html</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --l-bg:#f7f7f6; --l-panel:#fff; --l-fg:#16181a; --l-fg2:#5a6068; --l-fg3:#8b9199;
+  --l-line:#e3e5e8; --l-line2:#ccd0d5; --l-acc:#2f5bea;
+}
+:root[data-theme="dark"]{
+  --l-bg:#0d0f11; --l-panel:#16191c; --l-fg:#eef1f4; --l-fg2:#a6adb5; --l-fg3:#767d85;
+  --l-line:#232729; --l-line2:#333a3f; --l-acc:#7d9bff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--l-bg);color:var(--l-fg);font-family:"Inter",system-ui,sans-serif;
+  font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+.mono{font-family:"JetBrains Mono",monospace}
+button{font:inherit}
+
+/* top bar */
+.bar{flex:none;border-bottom:1px solid var(--l-line);background:var(--l-panel);
+  display:flex;align-items:center;gap:14px;padding:11px 18px;flex-wrap:wrap}
+.bar h1{font-size:14.5px;font-weight:600;letter-spacing:-.012em}
+.bar .sub{font-size:12px;color:var(--l-fg3)}
+.bar .sp{flex:1}
+.seg{display:flex;border:1px solid var(--l-line2);border-radius:8px;overflow:hidden}
+.seg button{background:var(--l-panel);border:none;color:var(--l-fg2);padding:6px 14px;
+  font-size:12.5px;cursor:pointer}
+.seg button.on{background:var(--l-acc);color:#fff}
+.btn{background:var(--l-panel);border:1px solid var(--l-line2);color:var(--l-fg);
+  padding:7px 14px;border-radius:8px;font-size:12.5px;cursor:pointer}
+.btn:hover{border-color:var(--l-acc);color:var(--l-acc)}
+.btn.p{background:var(--l-acc);border-color:var(--l-acc);color:#fff}
+.btn.p:hover{opacity:.9;color:#fff}
+
+/* layout */
+.main{flex:1;display:grid;grid-template-columns:330px 1fr;min-height:0}
+.panelcol{border-right:1px solid var(--l-line);background:var(--l-panel);
+  overflow-y:auto;padding:18px}
+.stage{background:var(--l-bg);display:flex;flex-direction:column;min-width:0}
+.stagebar{flex:none;padding:9px 16px;border-bottom:1px solid var(--l-line);
+  font-size:12px;color:var(--l-fg3);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+iframe{flex:1;width:100%;border:none;background:#fff;min-height:0}
+
+/* presets */
+.sec{margin-bottom:22px}
+.sec h2{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--l-fg3);margin-bottom:11px}
+.presets{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.pre{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--l-line2);
+  border-radius:8px;background:transparent;cursor:pointer;text-align:left;color:var(--l-fg2);font-size:12.5px}
+.pre:hover{border-color:var(--l-acc);color:var(--l-fg)}
+.pre.on{border-color:var(--l-acc);background:color-mix(in srgb,var(--l-acc) 8%,transparent);color:var(--l-fg)}
+.sw{width:16px;height:16px;border-radius:5px;flex:none;border:1px solid rgba(0,0,0,.12)}
+
+/* rows */
+.row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--l-line)}
+.row:last-child{border-bottom:none}
+.row .lbl{flex:1;min-width:0}
+.row .lbl b{display:block;font-size:12.5px;font-weight:500}
+.row .lbl span{display:block;font-size:11px;color:var(--l-fg3);line-height:1.4}
+.row input[type=color]{width:34px;height:30px;padding:0;border:1px solid var(--l-line2);
+  border-radius:7px;background:none;cursor:pointer;flex:none}
+.row input[type=text]{width:82px;flex:none;font-family:"JetBrains Mono",monospace;font-size:11.5px;
+  padding:6px 8px;border:1px solid var(--l-line2);border-radius:7px;background:var(--l-bg);
+  color:var(--l-fg);outline:none;text-transform:lowercase}
+.row input[type=text]:focus{border-color:var(--l-acc)}
+
+/* contrast readout */
+.contrast{margin-top:12px;border:1px solid var(--l-line);border-radius:9px;overflow:hidden}
+.cr{display:flex;align-items:center;gap:9px;padding:8px 11px;font-size:11.5px;border-bottom:1px solid var(--l-line)}
+.cr:last-child{border-bottom:none}
+.cr .n{flex:1;color:var(--l-fg2)}
+.cr .v{font-family:"JetBrains Mono",monospace;font-weight:500}
+.pill{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:4px;font-weight:600}
+.pass{background:#dcfce7;color:#15803d}
+.warn{background:#fef3c7;color:#a16207}
+.fail{background:#fee2e2;color:#b91c1c}
+:root[data-theme="dark"] .pass{background:#0d2a18;color:#4ade80}
+:root[data-theme="dark"] .warn{background:#2a2108;color:#fbbf24}
+:root[data-theme="dark"] .fail{background:#2c1214;color:#f87171}
+
+.hint{font-size:11.5px;color:var(--l-fg3);line-height:1.55;margin-top:9px}
+
+/* export sheet */
+.ovl{position:fixed;inset:0;background:rgba(5,8,10,.6);z-index:50;display:none;place-items:center;padding:24px}
+.ovl.on{display:grid}
+.sheet{background:var(--l-bg);border:1px solid var(--l-line2);border-radius:14px;
+  width:100%;max-width:620px;max-height:84dvh;display:flex;flex-direction:column;overflow:hidden}
+.sheet header{padding:15px 18px;border-bottom:1px solid var(--l-line);display:flex;
+  align-items:center;gap:12px;background:var(--l-panel)}
+.sheet header h3{font-size:14.5px;font-weight:600;flex:1}
+.sheet pre{flex:1;overflow:auto;margin:0;padding:16px 18px;font-family:"JetBrains Mono",monospace;
+  font-size:11.5px;line-height:1.65;color:var(--l-fg2);white-space:pre;background:var(--l-bg)}
+.sheet footer{padding:12px 18px;border-top:1px solid var(--l-line);display:flex;gap:9px;
+  justify-content:flex-end;background:var(--l-panel)}
+
+@media(max-width:900px){
+  .main{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .panelcol{border-right:none;border-bottom:1px solid var(--l-line);max-height:46dvh}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>Theme Lab</h1>
+  <span class="sub">live preview of <span class="mono">chat.html</span></span>
+  <span class="sp"></span>
+  <div class="seg" id="modeseg">
+    <button data-mode="light" class="on">Light</button>
+    <button data-mode="dark">Dark</button>
+  </div>
+  <button class="btn" onclick="resetAll()">Reset</button>
+  <button class="btn p" onclick="showCSS()">Copy CSS</button>
+</div>
+
+<div class="main">
+  <div class="panelcol">
+
+    <div class="sec">
+      <h2>Start from a palette</h2>
+      <div class="presets" id="presets"></div>
+      <p class="hint">Presets set both light and dark at once. Tweak anything after.</p>
+    </div>
+
+    <div class="sec">
+      <h2>Brand</h2>
+      <div id="brandrows"></div>
+      <div class="contrast" id="contrast"></div>
+      <p class="hint">Contrast is measured against the page background. AA needs 4.5 for body text, 3.0 for large text and UI.</p>
+    </div>
+
+    <div class="sec">
+      <h2>Surfaces</h2>
+      <div id="surfrows"></div>
+    </div>
+
+    <div class="sec">
+      <h2>Text</h2>
+      <div id="textrows"></div>
+    </div>
+
+    <div class="sec">
+      <h2>Lines</h2>
+      <div id="linerows"></div>
+    </div>
+
+  </div>
+
+  <div class="stage">
+    <div class="stagebar">
+      <span>Preview</span>
+      <span class="sp" style="flex:1"></span>
+      <button class="btn" onclick="jump('greet')">Top</button>
+      <button class="btn" onclick="jump('work')">/work</button>
+      <button class="btn" onclick="jump('fallback')">Fallback</button>
+      <button class="btn" onclick="jump('modal')">Modal</button>
+    </div>
+    <iframe id="pv" src="chat.html" title="chat.html preview"></iframe>
+  </div>
+</div>
+
+<div class="ovl" id="ovl">
+  <div class="sheet">
+    <header>
+      <h3>Paste this over the <span class="mono">:root</span> blocks in chat.html</h3>
+      <button class="btn" onclick="document.getElementById('ovl').classList.remove('on')">Close</button>
+    </header>
+    <pre id="cssout"></pre>
+    <footer>
+      <button class="btn" onclick="copyCSS()" id="copybtn">Copy to clipboard</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+/* ---------------------------------------------------------------
+   Token definitions. Order here is the order shown in the panel.
+   --------------------------------------------------------------- */
+const TOKENS = {
+  brand: [
+    ['--acc',      'Primary',    'Send button, avatars, links, active chips'],
+    ['--acc2',     'Secondary',  'Hover states, gradient partner'],
+    ['--acc-soft', 'Accent tint','Background behind hovered chips'],
+    ['--ok',       'Success',    'Confirmation tick after sending'],
+  ],
+  surf: [
+    ['--bg',     'Page',        'Everything sits on this'],
+    ['--panel',  'Panel',       'Cards, header, composer'],
+    ['--panel2', 'Chips',       'Command chip background'],
+    ['--user',   'Your bubble', 'Visitor message bubble'],
+  ],
+  text: [
+    ['--fg',  'Heading', 'Names, titles, emphasis'],
+    ['--fg2', 'Body',    'Most paragraph text'],
+    ['--fg3', 'Muted',   'Timestamps, hints, footnotes'],
+  ],
+  line: [
+    ['--line',  'Subtle border', 'Card and divider lines'],
+    ['--line2', 'Strong border', 'Inputs, outlined buttons'],
+  ],
+};
+
+const DEFAULTS = {
+  light:{'--bg':'#faf9f7','--panel':'#ffffff','--panel2':'#f3f1ed','--panel3':'#eceae5',
+    '--fg':'#1a1917','--fg2':'#54514a','--fg3':'#767267','--line':'#e6e3dc','--line2':'#d5d1c7',
+    '--acc':'#b8552f','--acc2':'#d9744b','--acc-soft':'#fbeee7','--user':'#f0ede7','--ok':'#17803d'},
+  dark:{'--bg':'#131211','--panel':'#1b1a18','--panel2':'#232120','--panel3':'#2b2927',
+    '--fg':'#f0eeea','--fg2':'#b0aca4','--fg3':'#8b8780','--line':'#2b2927','--line2':'#3a3734',
+    '--acc':'#e2825a','--acc2':'#f0a077','--acc-soft':'#2a1c15','--user':'#232120','--ok':'#4ade80'},
+};
+
+const PRESETS = {
+  'Indigo': {
+    light:{'--bg':'#fafafb','--panel':'#ffffff','--panel2':'#f2f3f7','--panel3':'#e9ebf1',
+      '--fg':'#14161c','--fg2':'#4c5160','--fg3':'#6f7583','--line':'#e4e6ed','--line2':'#d0d4de',
+      '--acc':'#4338ca','--acc2':'#6366f1','--acc-soft':'#eceafd','--user':'#eff0f6','--ok':'#15803d'},
+    dark:{'--bg':'#0e0f14','--panel':'#16181f','--panel2':'#1e2029','--panel3':'#262933',
+      '--fg':'#eceef4','--fg2':'#a5abbb','--fg3':'#7f8596','--line':'#242732','--line2':'#333748',
+      '--acc':'#8b85ff','--acc2':'#a9a4ff','--acc-soft':'#1b1930','--user':'#1e2029','--ok':'#4ade80'},
+  },
+  'Terracotta': DEFAULTS,
+  'Forest': {
+    light:{'--bg':'#f9faf8','--panel':'#ffffff','--panel2':'#eff3ee','--panel3':'#e5ebe4',
+      '--fg':'#131a15','--fg2':'#4a5650','--fg3':'#6c7871','--line':'#e2e8e1','--line2':'#ccd5cb',
+      '--acc':'#16794a','--acc2':'#22a565','--acc-soft':'#e4f4ec','--user':'#eef2ed','--ok':'#15803d'},
+    dark:{'--bg':'#0a0f0c','--panel':'#121814','--panel2':'#1a211c','--panel3':'#222a24',
+      '--fg':'#e9f0eb','--fg2':'#9eaba3','--fg3':'#7a8780','--line':'#1d2620','--line2':'#2c3730',
+      '--acc':'#3ddc84','--acc2':'#6ceaa4','--acc-soft':'#0f2418','--user':'#1a211c','--ok':'#4ade80'},
+  },
+  'Slate blue': {
+    light:{'--bg':'#f8fafc','--panel':'#ffffff','--panel2':'#eef2f7','--panel3':'#e4eaf1',
+      '--fg':'#0f1720','--fg2':'#48546a','--fg3':'#6b788c','--line':'#e2e8f0','--line2':'#cbd5e1',
+      '--acc':'#0369a1','--acc2':'#0ea5e9','--acc-soft':'#e2f2fc','--user':'#eef2f7','--ok':'#15803d'},
+    dark:{'--bg':'#0b0f14','--panel':'#131a21','--panel2':'#1a232c','--panel3':'#222d38',
+      '--fg':'#e9eff5','--fg2':'#9dabbb','--fg3':'#788798','--line':'#1e2832','--line2':'#2e3b48',
+      '--acc':'#4cb8f0','--acc2':'#7fd0f8','--acc-soft':'#0d2030','--user':'#1a232c','--ok':'#4ade80'},
+  },
+  'Plum': {
+    light:{'--bg':'#fbf9fb','--panel':'#ffffff','--panel2':'#f5f0f5','--panel3':'#ece5ed',
+      '--fg':'#1a141c','--fg2':'#574c5c','--fg3':'#776d7c','--line':'#eae3ec','--line2':'#d8cedb',
+      '--acc':'#8b2f6b','--acc2':'#b54a91','--acc-soft':'#f8eaf3','--user':'#f2ecf2','--ok':'#15803d'},
+    dark:{'--bg':'#120e14','--panel':'#1a141d','--panel2':'#231b26','--panel3':'#2c2230',
+      '--fg':'#f1eaf3','--fg2':'#b0a3b5','--fg3':'#8e8190','--line':'#261d29','--line2':'#362a3a',
+      '--acc':'#df7cba','--acc2':'#eda3d1','--acc-soft':'#2a1524','--user':'#231b26','--ok':'#4ade80'},
+  },
+  'Graphite': {
+    light:{'--bg':'#fafafa','--panel':'#ffffff','--panel2':'#f2f2f2','--panel3':'#e9e9e9',
+      '--fg':'#111111','--fg2':'#525252','--fg3':'#727272','--line':'#e5e5e5','--line2':'#d0d0d0',
+      '--acc':'#171717','--acc2':'#404040','--acc-soft':'#eeeeee','--user':'#f0f0f0','--ok':'#15803d'},
+    dark:{'--bg':'#0c0c0c','--panel':'#151515','--panel2':'#1e1e1e','--panel3':'#272727',
+      '--fg':'#f2f2f2','--fg2':'#a8a8a8','--fg3':'#838383','--line':'#222222','--line2':'#343434',
+      '--acc':'#fafafa','--acc2':'#d4d4d4','--acc-soft':'#1c1c1c','--user':'#1e1e1e','--ok':'#4ade80'},
+  },
+};
+
+let mode = 'light';
+let state = null;            // set from PRESETS.Indigo below
+let activePreset = 'Indigo';
+
+/* ---------------------------------------------------------------
+   Contrast maths (WCAG 2.1 relative luminance)
+   --------------------------------------------------------------- */
+const hex2rgb = h => { h=h.replace('#',''); if(h.length===3) h=h.split('').map(c=>c+c).join('');
+  return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); };
+function lum(hex){
+  const [r,g,b]=hex2rgb(hex).map(v=>{ v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4); });
+  return 0.2126*r + 0.7152*g + 0.0722*b;
+}
+function ratio(a,b){ const l1=lum(a),l2=lum(b); const hi=Math.max(l1,l2),lo=Math.min(l1,l2);
+  return (hi+0.05)/(lo+0.05); }
+
+/* ---------------------------------------------------------------
+   Preview wiring — same origin, so we can set vars directly
+   --------------------------------------------------------------- */
+const pv = document.getElementById('pv');
+function applyPreview(){
+  const doc = pv.contentDocument; if(!doc) return;
+  const root = doc.documentElement;
+  root.setAttribute('data-theme', mode);
+  for(const [k,v] of Object.entries(state[mode])) root.style.setProperty(k, v);
+}
+pv.addEventListener('load', ()=>{ applyPreview(); });
+
+function jump(where){
+  const doc = pv.contentDocument, win = pv.contentWindow; if(!doc||!win) return;
+  if(where==='modal'){ win.openAsk && win.openAsk(); return; }
+  if(win.closeAsk) win.closeAsk();
+  if(where==='greet'){ win.resetChat && win.resetChat(); return; }
+  if(where==='work'){ win.resetChat && win.resetChat(); setTimeout(()=>win.ask && win.ask('/work',true), 2600); return; }
+  if(where==='fallback'){ win.resetChat && win.resetChat();
+    setTimeout(()=>win.ask && win.ask('what is his favourite pizza',false), 2600); return; }
+}
+
+/* ---------------------------------------------------------------
+   Panel construction
+   --------------------------------------------------------------- */
+function rowHTML(tok,label,desc){
+  return `<div class="row" data-tok="${tok}">
+    <div class="lbl"><b>${label}</b><span>${desc}</span></div>
+    <input type="text" value="${state[mode][tok]}" spellcheck="false">
+    <input type="color" value="${state[mode][tok]}">
+  </div>`;
+}
+function build(){
+  document.getElementById('brandrows').innerHTML = TOKENS.brand.map(r=>rowHTML(...r)).join('');
+  document.getElementById('surfrows').innerHTML  = TOKENS.surf.map(r=>rowHTML(...r)).join('');
+  document.getElementById('textrows').innerHTML  = TOKENS.text.map(r=>rowHTML(...r)).join('');
+  document.getElementById('linerows').innerHTML  = TOKENS.line.map(r=>rowHTML(...r)).join('');
+
+  document.querySelectorAll('.row').forEach(row=>{
+    const tok = row.dataset.tok;
+    const [txt, col] = row.querySelectorAll('input');
+    const set = v => {
+      if(!/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v)) return;
+      state[mode][tok] = v.toLowerCase();
+      txt.value = v.toLowerCase(); col.value = v;
+      applyPreview(); renderContrast(); markPreset(null);
+    };
+    col.addEventListener('input', e=>set(e.target.value));
+    txt.addEventListener('change', e=>set(e.target.value.trim()));
+  });
+  renderContrast();
+}
+
+function renderContrast(){
+  const s = state[mode];
+  const checks = [
+    ['Primary on page',  s['--acc'],  s['--bg'],   3.0],
+    ['Body text on page',s['--fg2'],  s['--bg'],   4.5],
+    ['Muted on page',    s['--fg3'],  s['--bg'],   4.5],
+    ['Heading on panel', s['--fg'],   s['--panel'],4.5],
+  ];
+  document.getElementById('contrast').innerHTML = checks.map(([n,fg,bg,min])=>{
+    const r = ratio(fg,bg), ok = r>=min, near = r>=min-1.0;
+    const cls = ok ? 'pass' : (near ? 'warn' : 'fail');
+    const tag = ok ? 'pass' : (near ? 'close' : 'low');
+    return `<div class="cr"><span class="n">${n}</span>
+      <span class="v">${r.toFixed(1)}</span><span class="pill ${cls}">${tag}</span></div>`;
+  }).join('');
+}
+
+/* presets */
+function markPreset(name){
+  activePreset = name;
+  document.querySelectorAll('.pre').forEach(b=>b.classList.toggle('on', b.dataset.name===name));
+}
+const presetWrap = document.getElementById('presets');
+Object.entries(PRESETS).forEach(([name,pal])=>{
+  const b=document.createElement('button');
+  b.className='pre'+(name==='Indigo'?' on':''); b.dataset.name=name;
+  b.innerHTML = `<span class="sw" style="background:${pal.light['--acc']}"></span>${name}`;
+  b.addEventListener('click',()=>{
+    state = structuredClone(pal);
+    build(); applyPreview(); markPreset(name);
+  });
+  presetWrap.appendChild(b);
+});
+
+/* mode switch */
+document.querySelectorAll('#modeseg button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    mode = b.dataset.mode;
+    document.querySelectorAll('#modeseg button').forEach(x=>x.classList.toggle('on', x===b));
+    document.documentElement.setAttribute('data-theme', mode);
+    build(); applyPreview();
+  });
+});
+
+function resetAll(){
+  state = structuredClone(PRESETS['Indigo']);
+  build(); applyPreview(); markPreset('Indigo');
+}
+
+/* export */
+function cssBlock(){
+  const fmt = obj => Object.entries(obj).map(([k,v])=>`  ${k}:${v};`).join('\n');
+  return `:root{\n${fmt(state.light)}\n}\n\n:root[data-theme="dark"]{\n${fmt(state.dark)}\n}`;
+}
+function showCSS(){
+  document.getElementById('cssout').textContent = cssBlock();
+  document.getElementById('ovl').classList.add('on');
+}
+async function copyCSS(){
+  const btn=document.getElementById('copybtn');
+  try{ await navigator.clipboard.writeText(cssBlock()); btn.textContent='Copied'; }
+  catch(e){
+    const pre=document.getElementById('cssout');
+    const r=document.createRange(); r.selectNodeContents(pre);
+    const sel=getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    btn.textContent='Selected — press ⌘C';
+  }
+  setTimeout(()=>btn.textContent='Copy to clipboard',1800);
+}
+document.getElementById('ovl').addEventListener('click',e=>{
+  if(e.target.id==='ovl') e.currentTarget.classList.remove('on');
+});
+addEventListener('keydown',e=>{ if(e.key==='Escape') document.getElementById('ovl').classList.remove('on'); });
+
+state = structuredClone(PRESETS['Indigo']);
+build();
+</script>
+</body>
+</html>

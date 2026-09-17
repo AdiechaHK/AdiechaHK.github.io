@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harikrushna V. Adiecha — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf8f4; --ink:#1a1917; --ink-soft:#4a4741; --ink-faint:#8a857c;
+  --rule:#e0dbd1; --rule-soft:#eeeae2; --accent:#8b3a1f; --accent-soft:#f4ece6;
+  --card:#ffffff;
+}
+:root[data-theme="dark"]{
+  --paper:#14130f; --ink:#eeeae2; --ink-soft:#b4aea3; --ink-faint:#7d776c;
+  --rule:#2e2b25; --rule-soft:#221f1a; --accent:#d98a5f; --accent-soft:#251c16;
+  --card:#1a1814;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Newsreader",Georgia,serif; font-size:19px; line-height:1.65;
+  font-optical-sizing:auto;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+a:hover{border-bottom-color:var(--accent)}
+
+/* Masthead */
+.masthead{padding:72px 0 0;position:relative}
+.kicker{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:26px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.theme-btn{
+  font:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  background:none;border:1px solid var(--rule);color:var(--ink-faint);
+  padding:5px 11px;border-radius:2px;cursor:pointer;
+}
+.theme-btn:hover{border-color:var(--ink-faint);color:var(--ink)}
+h1{
+  font-size:clamp(38px,7vw,58px);line-height:1.05;font-weight:500;
+  letter-spacing:-.02em;margin-bottom:22px;
+}
+.standfirst{
+  font-size:22px;line-height:1.5;color:var(--ink-soft);
+  max-width:36ch;margin-bottom:34px;
+}
+.standfirst em{font-style:italic;color:var(--ink)}
+.byline{
+  display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;
+  font-family:"IBM Plex Sans",sans-serif;font-size:13px;color:var(--ink-faint);
+  padding-bottom:40px;border-bottom:2px solid var(--ink);
+}
+.byline a{border:none;color:var(--ink-soft)}
+.byline a:hover{color:var(--accent)}
+
+/* Body */
+section{padding:52px 0;border-bottom:1px solid var(--rule)}
+.sec-label{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:26px;
+}
+h2{font-size:15px;font-family:"IBM Plex Sans",sans-serif;font-weight:600;letter-spacing:-.01em}
+p+p{margin-top:18px}
+.lede{font-size:21px;line-height:1.6}
+.lede strong{font-weight:600}
+.drop::first-letter{
+  float:left;font-size:64px;line-height:.82;font-weight:500;
+  padding:6px 10px 0 0;color:var(--accent);
+}
+
+/* Work entries */
+.entry{padding:34px 0;border-top:1px solid var(--rule-soft)}
+.entry:first-of-type{border-top:none;padding-top:8px}
+.entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+.entry-title{font-size:24px;font-weight:500;line-height:1.25;letter-spacing:-.015em;flex:1 1 320px}
+.entry-meta{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+  color:var(--ink-faint);text-transform:uppercase;white-space:nowrap;
+}
+.entry p{color:var(--ink-soft);font-size:18px}
+.outcome{
+  display:block;margin-top:16px;padding:12px 0 0;border-top:1px solid var(--rule-soft);
+  font-family:"IBM Plex Sans",sans-serif;font-size:14px;font-weight:500;color:var(--ink);
+}
+.outcome span{color:var(--accent);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:3px;font-weight:400}
+
+/* Capability columns */
+.cols{columns:2;column-gap:40px;font-family:"IBM Plex Sans",sans-serif;font-size:14.5px}
+.cap{break-inside:avoid;margin-bottom:22px}
+.cap h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:7px;font-family:"IBM Plex Mono",monospace}
+.cap p{color:var(--ink-soft);line-height:1.55}
+
+/* Timeline */
+.role{display:grid;grid-template-columns:118px 1fr;gap:22px;padding:20px 0;border-top:1px solid var(--rule-soft)}
+.role:first-child{border-top:none}
+.role-when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint);line-height:1.5;padding-top:4px}
+.role-what{font-family:"IBM Plex Sans",sans-serif}
+.role-what h3{font-size:16px;font-weight:600;margin-bottom:2px}
+.role-org{font-size:13.5px;color:var(--ink-faint);margin-bottom:8px}
+.role-what p{font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+
+/* Talks */
+.talk{padding:15px 0;border-top:1px solid var(--rule-soft);font-family:"IBM Plex Sans",sans-serif}
+.talk:first-child{border-top:none}
+.talk-t{font-size:15.5px;font-weight:500;margin-bottom:3px}
+.talk-m{font-size:13px;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace}
+
+footer{padding:46px 0 72px;font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--ink-faint)}
+.foot-links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:18px}
+.foot-links a{border:none;font-weight:500}
+
+@media(max-width:640px){
+  body{font-size:17px}
+  .cols{columns:1}
+  .role{grid-template-columns:1fr;gap:6px}
+  .masthead{padding-top:44px}
+  .standfirst{font-size:19px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">
+      <span>Ahmedabad, India — Thirteen years in production</span>
+      <button class="theme-btn" onclick="tt()">Theme</button>
+    </div>
+    <h1>Harikrushna<br>Adiecha</h1>
+    <p class="standfirst">
+      I put AI systems into places they have to keep working — and I've spent
+      thirteen years learning <em>what that actually costs.</em>
+    </p>
+    <div class="byline">
+      <span>Tech Lead, WebOccult Technologies</span>
+      <a href="mailto:adiechahari@gmail.com">adiechahari@gmail.com</a>
+      <a href="https://github.com/AdiechaHK">GitHub</a>
+      <a href="https://www.linkedin.com/in/harikrushna-adiecha-19434458/">LinkedIn</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="lede drop">
+      A face-recognition system authorising entries in a Japanese facility. A speech-to-text
+      to LLM to speech loop inside a conversational care robot. An agent workflow that turned
+      a full day of client reporting into under thirty minutes. None of these are demos —
+      they are things other people now depend on, which is a different engineering problem
+      entirely.
+    </p>
+    <p>
+      The reason I can be trusted with that is the decade underneath it. I've owned an
+      eight-year-old platform handling <strong>500K requests a day</strong> across roughly
+      300 pods, moved a <strong>36GB production database</strong> onto new infrastructure
+      with ten seconds of downtime, and I'm currently architecting a ground-up rebuild
+      replacing a Salesforce implementation for
+      <strong>13 enterprise customers and 20,000+ end users</strong>.
+    </p>
+    <p>
+      Most of that work happened close to the people using it — four years embedded with a
+      product group in Portugal, a deployment in Japan, enterprise customers whose workflows
+      I had to understand properly before I could model them. I've come to think that's the
+      interesting part of the job, not the part you tolerate to get to the code.
+    </p>
+  </section>
+
+  <section>
+    <p class="sec-label">Selected work</p>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h2 class="entry-title">Face-recognition access control, deployed in Japan</h2>
+        <span class="entry-meta">WebOccult · 2025</span>
+      </div>
+      <p>
+        Led engineering for a production access-control system on a customer site in Japan,
+        integrating an in-house detection API with SESAME smart locks. The model was never the
+        hard part. Making a vision system and third-party hardware agree on who may pass through
+        a door — reliably, every day, in a building I did not control — was.
+      </p>
+      <span class="outcome"><span>In production</span>Authorising 30–100 restricted-area entries per day</span>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h2 class="entry-title">An agent that writes the reports nobody wanted to write</h2>
+        <span class="entry-meta">WebOccult · 2025</span>
+      </div>
+      <p>
+        A Claude Code workflow pulling from Odoo and GitHub to assemble developer status reports
+        and monthly client progress reports, with per-item evidence attached to every claim. The
+        design question was never "can the model write this" — it was which judgments stay with a
+        human. The agent gathers and drafts; people decide.
+      </p>
+      <span class="outcome"><span>Result</span>Status reports 30–45 min → ~5 min. Monthly client reports: a full working day → under 30 minutes, including revisions.</span>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h2 class="entry-title">A care robot that had to answer fast enough to feel like a conversation</h2>
+        <span class="entry-meta">WebOccult · 2025</span>
+      </div>
+      <p>
+        An elder-care robot prototype running a speech-to-text → LLM → text-to-speech loop.
+        Latency is the entire product here. A pause that would pass unnoticed in a chat window
+        is a broken conversation when someone is speaking aloud to a machine and waiting.
+      </p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h2 class="entry-title">Moving 36GB of production data with the lights on</h2>
+        <span class="entry-meta">WebOccult · 2025</span>
+      </div>
+      <p>
+        A production MongoDB — 250 to 300 concurrent connections from web services, batch jobs
+        and edge devices — began starving the services sharing its host. I moved it onto dedicated
+        infrastructure by replica-set promotion with a scripted cutover: quiesce writers, verify
+        sync, promote the secondary, rotate credentials, restart.
+      </p>
+      <span class="outcome"><span>Downtime</span>Ten seconds in total, plus one planned twenty-minute window</span>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h2 class="entry-title">When the client broke the contract our data model rested on</h2>
+        <span class="entry-meta">Improwised · 2019–2022</span>
+      </div>
+      <p>
+        An eight-year-old scraping platform assumed client-supplied IDs were stable. A client
+        began emitting inconsistent identifiers for the same business and the assumption
+        collapsed underneath us. Rather than rebuild, I added an MD5 content hash over the
+        business's identifying attributes as a fallback key, checked only when the primary ID
+        misses — restoring integrity without breaking a single existing API contract.
+      </p>
+      <span class="outcome"><span>Result</span>Eliminated 95% of duplicate business records</span>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h2 class="entry-title">500K requests a day, and a rewrite shipped into live traffic</h2>
+        <span class="entry-meta">Improwised · 2019–2022</span>
+      </div>
+      <p>
+        Owned a scraping platform processing 500K requests per day across up to 300 pods against
+        a ~200GB database on rolling three-month retention. Migrated the core scraper from Python
+        to Go and rolled the rewrite into the running system.
+      </p>
+      <span class="outcome"><span>Result</span>10× execution-time improvement</span>
+    </article>
+  </section>
+
+  <section>
+    <p class="sec-label">What I work with</p>
+    <div class="cols">
+      <div class="cap">
+        <h3>AI systems</h3>
+        <p>LLM pipelines, agent workflows and orchestration, OpenAI APIs, Claude Code, speech-to-text and text-to-speech loops, computer vision integration.</p>
+      </div>
+      <div class="cap">
+        <h3>Architecture</h3>
+        <p>Multi-tenant SaaS, event-driven and queue-based systems, legacy modernisation, domain and data modelling, live migration, high availability.</p>
+      </div>
+      <div class="cap">
+        <h3>Backend</h3>
+        <p>Python, PHP and Laravel, Go, FastAPI, Node.js. REST API design, authentication and role-based authorisation.</p>
+      </div>
+      <div class="cap">
+        <h3>Data</h3>
+        <p>PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch. Schema design, query optimisation, replication, cross-engine migration.</p>
+      </div>
+      <div class="cap">
+        <h3>Cloud &amp; delivery</h3>
+        <p>AWS — App Runner, ECR, S3, SQS, RDS. Docker, GitHub Actions, Nginx, Cloudflare, Linux.</p>
+      </div>
+      <div class="cap">
+        <h3>Observability &amp; quality</h3>
+        <p>Grafana, Prometheus, Sentry, n8n. PHPStan at maximum level, Pest and PHPUnit enforced in CI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-label">Where I've been</p>
+
+    <div class="role">
+      <div class="role-when">Nov 2024<br>— Present</div>
+      <div class="role-what">
+        <h3>Tech Lead</h3>
+        <p class="role-org">WebOccult Technologies, Ahmedabad</p>
+        <p>Lead a five-person cross-functional team and own end-to-end architecture for a ground-up rebuild replacing a Salesforce implementation. Led engineering for the Japan deployment and the care robot, introduced Grafana and Prometheus observability across five servers, and built the agent workflows the team now reports through.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-when">Jun 2022<br>— Oct 2024</div>
+      <div class="role-what">
+        <h3>Technical Project Manager</h3>
+        <p class="role-org">Enstead, Remote (Portugal-based group)</p>
+        <p>Embedded with a Portugal-based product group as hands-on technical lead, moving across products as delivery priorities required. Architected a remote-support platform combining ticketing, real-time chat, video and on-call augmented reality, letting customers resolve equipment issues without dispatching a field engineer.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-when">Jan 2019<br>— Jun 2022</div>
+      <div class="role-what">
+        <h3>Tech Lead &amp; Senior Software Engineer</h3>
+        <p class="role-org">Improwised Technology, Rajkot</p>
+        <p>Owned an eight-year-old production scraping platform at 500K requests per day across up to 300 pods and a ~200GB database. Redesigned deduplication, migrated the core scraper from Python to Go.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-when">Apr 2017<br>— Sep 2018</div>
+      <div class="role-what">
+        <h3>Tech Lead &amp; Senior PHP Developer</h3>
+        <p class="role-org">DevRepublic, Ahmedabad</p>
+        <p>Led Laravel development for a social platform with integrated video chat. Built a Vue.js gift editor with server-side banner-resolution image generation.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-when">Jun 2014<br>— Apr 2017</div>
+      <div class="role-what">
+        <h3>Founder</h3>
+        <p class="role-org">CodeGeeks, Rajkot</p>
+        <p>Founded an independent software practice. E-commerce platforms, examination systems, payment integrations.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="role-when">2012<br>— 2014</div>
+      <div class="role-what">
+        <h3>Earlier</h3>
+        <p class="role-org">Canvass, Mumbai · Improwised Technology, Rajkot</p>
+        <p>Marketing automation on Java and Struts at Canvass. First engineering role at Improwised in 2012 — a company I returned to as Tech Lead seven years later.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-label">Talks</p>
+    <div class="talk"><p class="talk-t">Level Up Your Laravel API: Structure, Testing and Other Tools</p><p class="talk-m">June 2025 · Simprosys, Ahmedabad · Laravel Ahmedabad</p></div>
+    <div class="talk"><p class="talk-t">Flawless CI/CD via GitHub Actions</p><p class="talk-m">March 2023 · RKU City Campus, Rajkot · Laravel Rajkot</p></div>
+    <div class="talk"><p class="talk-t">Tips and Tricks for Using Laravel Efficiently</p><p class="talk-m">April 2022 · RKU City Campus, Rajkot · Laravel Rajkot</p></div>
+    <div class="talk"><p class="talk-t">Introduction to Vue JS</p><p class="talk-m">December 2019 · RKU City Campus, Rajkot · Laravel Rajkot</p></div>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="mailto:adiechahari@gmail.com">adiechahari@gmail.com</a>
+      <a href="https://github.com/AdiechaHK">GitHub</a>
+      <a href="https://www.linkedin.com/in/harikrushna-adiecha-19434458/">LinkedIn</a>
+      <a href="https://twitter.com/HK_Adiecha">Twitter</a>
+    </div>
+    <p>Away from the keyboard: table tennis, chess, IoT tinkering, and pencil drawing.</p>
+  </footer>
+
+</div>
+<script>
+function tt(){
+  const r=document.documentElement;
+  r.setAttribute('data-theme', r.getAttribute('data-theme')==='dark'?'light':'dark');
+}
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.documentElement.setAttribute('data-theme','dark');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harikrushna V. Adiecha — Ambient</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0806; --bg2:#120e09; --card:#151009; --card2:#1d1610;
+  --fg:#f3ede4; --fg2:#a89c8c; --fg3:#6b6153;
+  --line:#241c13; --line2:#33281c;
+  --acc:#f0a023; --acc2:#ffcf6b; --glow:rgba(240,160,35,.45);
+  --dot:rgba(240,160,35,.12);
+}
+:root[data-theme="light"]{
+  --bg:#fdfbf7; --bg2:#f7f2e9; --card:#ffffff; --card2:#faf6ef;
+  --fg:#191410; --fg2:#5c5246; --fg3:#948877;
+  --line:#ebe3d6; --line2:#ddd2c0;
+  --acc:#b4690e; --acc2:#8a4f08; --glow:rgba(180,105,14,.25);
+  --dot:rgba(180,105,14,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);overflow-x:hidden;
+  font-family:"Outfit",system-ui,sans-serif;font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"JetBrains Mono",monospace}
+.wrap{max-width:1140px;margin:0 auto;padding:0 34px;position:relative;z-index:3}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:99;background:var(--acc);box-shadow:0 0 14px var(--glow)}
+
+/* ambient background: dots + floating keywords */
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.dots{position:absolute;inset:0;
+  background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:26px 26px;
+  mask-image:radial-gradient(ellipse 90% 60% at 50% 10%,#000 25%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 10%,#000 25%,transparent 78%);
+}
+.kw{
+  position:absolute;font-family:"JetBrains Mono",monospace;
+  color:var(--acc);opacity:.16;white-space:nowrap;user-select:none;
+  animation:drift var(--d,14s) ease-in-out infinite alternate;
+}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,var(--y,-14px),0)}}
+.glowspot{position:absolute;width:620px;height:420px;left:50%;top:-130px;transform:translateX(-50%);
+  background:radial-gradient(ellipse,var(--glow),transparent 68%);opacity:.28;filter:blur(28px)}
+
+/* social rail */
+.rail{position:fixed;left:18px;bottom:0;z-index:40;display:flex;flex-direction:column;
+  align-items:center;gap:16px}
+.rail a{color:var(--fg3);font-size:14px;transition:.18s;font-family:"JetBrains Mono",monospace}
+.rail a:hover{color:var(--acc);transform:translateY(-2px)}
+.rail::after{content:"";width:1px;height:76px;background:linear-gradient(var(--line2),transparent);margin-top:6px}
+@media(max-width:1100px){.rail{display:none}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nv{max-width:1140px;margin:0 auto;padding:15px 34px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.lg{font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:500}
+.lg span{color:var(--acc)}
+.nv .sp{flex:1}
+.nv a{font-size:14px;color:var(--fg2);position:relative;transition:color .15s}
+.nv a:hover{color:var(--fg)}
+.nv a::after{content:"";position:absolute;left:50%;bottom:-6px;width:4px;height:4px;border-radius:50%;
+  background:var(--acc);opacity:0;transform:translateX(-50%);transition:opacity .2s}
+.nv a:hover::after{opacity:1}
+.tg{background:var(--card);border:1px solid var(--line2);color:var(--fg2);width:34px;height:34px;
+  border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:14px}
+.tg:hover{color:var(--acc);border-color:var(--acc)}
+
+/* hero */
+.hero{padding:86px 0 70px;min-height:82vh;display:flex;flex-direction:column;justify-content:center}
+.term{
+  display:inline-flex;align-items:center;font-family:"JetBrains Mono",monospace;font-size:13px;
+  border:1px solid var(--line2);background:var(--card);border-radius:7px;
+  padding:8px 15px;margin-bottom:30px;color:var(--fg2);width:fit-content;
+}
+.term .p{color:var(--acc);margin-right:9px}
+.cur{display:inline-block;width:8px;height:15px;background:var(--acc);margin-left:3px;
+  animation:blink 1.05s step-end infinite;vertical-align:-2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hi{font-size:clamp(26px,4.4vw,42px);font-weight:400;color:var(--fg2);letter-spacing:-.02em;margin-bottom:2px}
+h1{
+  font-size:clamp(42px,9vw,98px);font-weight:800;letter-spacing:-.045em;line-height:.96;
+  color:var(--acc);margin-bottom:26px;text-shadow:0 0 58px var(--glow);
+}
+.lede{font-size:18.5px;line-height:1.7;color:var(--fg2);max-width:58ch;margin-bottom:36px}
+.lede b{color:var(--fg);font-weight:600}
+.cta{display:flex;gap:13px;flex-wrap:wrap}
+.btn{padding:13px 28px;border-radius:99px;font-size:15px;font-weight:500;transition:.2s;border:1px solid transparent}
+.btn.p{background:var(--acc);color:#140d02;box-shadow:0 0 34px -6px var(--glow)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 6px 40px -6px var(--glow)}
+.btn.s{border-color:var(--line2);color:var(--fg)}
+.btn.s:hover{border-color:var(--acc);color:var(--acc)}
+
+/* sections */
+section{padding:82px 0;position:relative}
+.sh{margin-bottom:40px}
+.sh .kx{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--acc);
+  letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:9px}
+.sh h2{font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:-.032em}
+
+/* stat cards */
+.sts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:18px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;
+  transition:.2s;position:relative;overflow:hidden}
+.st::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .25s;
+  background:radial-gradient(320px 130px at 30% 0%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 70%)}
+.st:hover{border-color:var(--acc);transform:translateY(-3px)}
+.st:hover::before{opacity:1}
+.st .v{font-size:34px;font-weight:700;color:var(--acc);letter-spacing:-.035em;line-height:1;display:block;position:relative}
+.st .k{font-size:13.5px;color:var(--fg2);margin-top:10px;line-height:1.45;position:relative}
+
+/* work */
+.wk{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;
+  margin-bottom:15px;transition:.22s;position:relative;overflow:hidden}
+.wk::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(500px 200px at 15% 0%,color-mix(in srgb,var(--acc) 8%,transparent),transparent 72%)}
+.wk:hover{border-color:var(--line2);transform:translateY(-3px)}
+.wk:hover::before{opacity:1}
+.wk-h{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px;position:relative}
+.wk-h h3{font-size:22px;font-weight:600;letter-spacing:-.026em;line-height:1.28;max-width:30ch}
+.wk-h .w{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--fg3);white-space:nowrap;padding-top:6px}
+.wk p{font-size:15.5px;line-height:1.7;color:var(--fg2);max-width:78ch;position:relative}
+.res{margin-top:20px;display:flex;gap:13px;align-items:flex-start;position:relative;
+  border-left:2px solid var(--acc);padding-left:15px}
+.res p{font-size:15px;color:var(--fg);font-weight:500;margin:0;line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;position:relative}
+.chips span{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--fg3);
+  border:1px solid var(--line2);padding:4px 11px;border-radius:99px}
+
+/* stack */
+.stk{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.stc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.2s}
+.stc:hover{border-color:var(--acc);transform:translateY(-3px)}
+.stc h4{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--acc);margin-bottom:13px}
+.stc p{font-size:14.5px;color:var(--fg2);line-height:1.68}
+.stc p b{color:var(--fg);font-weight:600}
+
+/* timeline */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,var(--acc),var(--line2) 26%,var(--line2))}
+.ti{position:relative;padding-bottom:34px}
+.ti:last-child{padding-bottom:0}
+.ti::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line2)}
+.ti.now::before{border-color:var(--acc);background:var(--acc);box-shadow:0 0 0 5px var(--glow)}
+.ti .w{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--fg3)}
+.ti h3{font-size:18.5px;font-weight:600;margin:4px 0 2px;letter-spacing:-.018em}
+.ti .o{font-size:14px;color:var(--acc);margin-bottom:9px}
+.ti p{font-size:15px;color:var(--fg2);line-height:1.7;max-width:78ch}
+
+/* talks */
+.tk{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:13px}
+.tkc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.2s}
+.tkc:hover{border-color:var(--acc);transform:translateY(-3px)}
+.tkc .t{font-size:15.5px;font-weight:500;line-height:1.42;margin-bottom:10px}
+.tkc .m{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--fg3);line-height:1.6}
+
+/* contact */
+.ct{text-align:center;padding:96px 0 40px;border-top:1px solid var(--line)}
+.ct h2{font-size:clamp(30px,5.4vw,54px);font-weight:700;letter-spacing:-.038em;line-height:1.1;
+  margin-bottom:20px;max-width:18ch;margin-inline:auto}
+.ct p{color:var(--fg2);font-size:17px;margin-bottom:32px;max-width:52ch;margin-inline:auto}
+.ct .lnks{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:30px;
+  font-family:"JetBrains Mono",monospace;font-size:13px}
+.ct .lnks a{color:var(--fg3)}
+.ct .lnks a:hover{color:var(--acc)}
+footer{text-align:center;padding:0 0 64px;font-size:13.5px;color:var(--fg3)}
+
+@media(max-width:700px){
+  .wrap,.nv{padding-left:20px;padding-right:20px}
+  .wk,.st,.stc{padding:22px}
+  .nv a:not(.lg){display:none}
+  .hero{min-height:auto;padding-top:56px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="amb"><div class="dots"></div><div class="glowspot"></div><div id="kws"></div></div>
+
+<div class="rail">
+  <a href="https://github.com/AdiechaHK" title="GitHub">gh</a>
+  <a href="https://www.linkedin.com/in/harikrushna-adiecha-19434458/" title="LinkedIn">in</a>
+  <a href="https://twitter.com/HK_Adiecha" title="Twitter">tw</a>
+  <a href="mailto:adiechahari@gmail.com" title="Email">@</a>
+</div>
+
+<nav>
+  <div class="nv">
+    <span class="lg">HK<span>.</span>dev</span>
+    <span class="sp"></span>
+    <a href="#work">Work</a><a href="#stack">Stack</a><a href="#history">History</a><a href="#contact">Contact</a>
+    <button class="tg" onclick="tt()" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="term"><span class="p">~/hk $</span><span id="typed"></span><span class="cur"></span></div>
+    <p class="hi">Hi, I'm</p>
+    <h1>Harikrushna<br>Adiecha</h1>
+    <p class="lede">
+      I take AI systems into the places they have to keep working — a face-recognition system
+      authorising entries in a Japanese facility, a speech-to-LLM-to-speech loop in a care robot,
+      an agent workflow the team now reports through. <b>Not demos. Things people depend on.</b>
+      Thirteen years of backend architecture is what makes that defensible.
+    </p>
+    <div class="cta">
+      <a class="btn p" href="#work">See the systems</a>
+      <a class="btn s" href="mailto:adiechahari@gmail.com">Let's talk</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="sts">
+      <div class="st"><span class="v">13+</span><span class="k">years building and running production systems</span></div>
+      <div class="st"><span class="v">500K</span><span class="k">requests/day platform owned, up to 300 pods</span></div>
+      <div class="st"><span class="v">10 sec</span><span class="k">total downtime migrating 36GB of live data</span></div>
+      <div class="st"><span class="v">20,000+</span><span class="k">end users on the rebuild I currently architect</span></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sh"><span class="kx">01 — Selected work</span><h2>Six systems, and what made each one hard</h2></div>
+
+    <article class="wk">
+      <div class="wk-h"><h3>Face-recognition access control, deployed in Japan</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <p>Led engineering for a production access-control system on a customer site in Japan, integrating an in-house detection API with SESAME smart locks. The model was never the hard part — getting a vision system and third-party hardware to agree on who may pass through a door, reliably, every day, in a building I did not control, was.</p>
+      <div class="res"><p>Authorising 30–100 restricted-area entries per day in production.</p></div>
+      <div class="chips"><span>computer vision</span><span>hardware integration</span><span>on-site deployment</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>An agent that writes the reports nobody wanted to write</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <p>A Claude Code workflow pulling from Odoo and GitHub to assemble developer status reports and monthly client progress reports, with per-item evidence attached to every claim. The real design question was never "can the model write this" — it was which judgments stay with a human. The agent gathers and drafts; people decide.</p>
+      <div class="res"><p>Status reports 30–45 min → ~5 min. Monthly client reports: a full working day → under 30 minutes, including revisions.</p></div>
+      <div class="chips"><span>agent orchestration</span><span>LLM tooling</span><span>Odoo + GitHub APIs</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>A care robot that had to answer fast enough to feel like conversation</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <p>An elder-care robot prototype running a speech-to-text → LLM → text-to-speech loop. Latency is the entire product here. A pause that passes unnoticed in a chat window is a broken conversation when someone is speaking aloud to a machine and waiting for an answer.</p>
+      <div class="chips"><span>STT / TTS</span><span>LLM pipeline</span><span>latency engineering</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>Moving 36GB of production data with the lights on</h3><span class="w">WEBOCCULT · 2025</span></div>
+      <p>A production MongoDB at 250–300 concurrent connections — web services, batch jobs, edge devices — had begun starving the services sharing its host. I moved it onto dedicated infrastructure by replica-set promotion with a scripted cutover: quiesce writers, verify sync, promote the secondary, rotate credentials, restart. Scripted, because a cutover you perform by hand is a cutover you perform differently under pressure.</p>
+      <div class="res"><p>Ten seconds of total downtime, plus one planned twenty-minute window.</p></div>
+      <div class="chips"><span>MongoDB</span><span>live migration</span><span>replica sets</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>When the client broke the contract our data model rested on</h3><span class="w">IMPROWISED · 2019–2022</span></div>
+      <p>An eight-year-old scraping platform assumed client-supplied IDs were stable. A client began emitting inconsistent identifiers for the same business and the assumption collapsed underneath us. Rather than rebuild, I added an MD5 content hash over the business's identifying attributes as a fallback key, checked only when the primary ID misses — restoring integrity without breaking a single existing client API contract.</p>
+      <div class="res"><p>Eliminated 95% of duplicate business records.</p></div>
+      <div class="chips"><span>deduplication</span><span>data modeling</span><span>backwards compatibility</span></div>
+    </article>
+
+    <article class="wk">
+      <div class="wk-h"><h3>500K requests a day, and a rewrite shipped into live traffic</h3><span class="w">IMPROWISED · 2019–2022</span></div>
+      <p>Owned a scraping platform processing 500K requests per day across up to 300 pods against a ~200GB database on rolling three-month retention. Migrated the core scraper from Python to Go and rolled the rewrite into the running large-scale system rather than staging a parallel cutover.</p>
+      <div class="res"><p>10× execution-time improvement, shipped into production traffic.</p></div>
+      <div class="chips"><span>Go</span><span>Python</span><span>high-throughput systems</span></div>
+    </article>
+  </section>
+
+  <section id="stack">
+    <div class="sh"><span class="kx">02 — Stack</span><h2>What I work with</h2></div>
+    <div class="stk">
+      <div class="stc"><h4>AI systems</h4><p><b>LLM pipelines</b>, <b>agent workflows</b> and orchestration, OpenAI APIs, Claude Code, speech-to-text and text-to-speech loops, computer vision integration.</p></div>
+      <div class="stc"><h4>Architecture</h4><p><b>Multi-tenant SaaS</b>, <b>event-driven</b> and queue-based systems, legacy modernization, domain and data modeling, live migration, high availability.</p></div>
+      <div class="stc"><h4>Backend</h4><p><b>Python</b>, <b>PHP / Laravel</b>, Go, FastAPI, Node.js. REST API design, JWT authentication, role-based authorization.</p></div>
+      <div class="stc"><h4>Data</h4><p><b>PostgreSQL</b>, <b>MySQL</b>, MongoDB, Redis, Elasticsearch. Schema design, query optimization, replication, cross-engine migration.</p></div>
+      <div class="stc"><h4>Cloud &amp; delivery</h4><p><b>AWS</b> — App Runner, ECR, S3, SQS, RDS. Docker, GitHub Actions, Nginx, Cloudflare, Linux.</p></div>
+      <div class="stc"><h4>Observability</h4><p><b>Grafana</b>, <b>Prometheus</b>, Sentry, n8n. PHPStan at maximum level and Pest / PHPUnit enforced in CI.</p></div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="sh"><span class="kx">03 — History</span><h2>Where I've been</h2></div>
+    <div class="tl">
+      <div class="ti now">
+        <p class="w">Nov 2024 — Present</p><h3>Tech Lead</h3><p class="o">WebOccult Technologies · Ahmedabad</p>
+        <p>Lead a five-person cross-functional team and own end-to-end architecture — domain model, multi-tenancy, API contracts, CI/CD, deployment topology — for a ground-up rebuild replacing a Salesforce implementation serving 13 enterprise customers and 20,000+ end users. Led engineering for the Japan deployment and the care robot, introduced Grafana and Prometheus observability across five servers, and built the agent workflows the team now reports through.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Jun 2022 — Oct 2024</p><h3>Technical Project Manager</h3><p class="o">Enstead · Remote, Portugal-based group</p>
+        <p>Embedded with a Portugal-based product group as hands-on technical lead, moving across products as delivery priorities required. Architected a remote-support platform combining ticketing, real-time chat, video and on-call augmented reality — letting customers resolve equipment issues without dispatching a field engineer. Migrated MySQL to PostgreSQL, owned cross-platform API design.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Jan 2019 — Jun 2022</p><h3>Tech Lead &amp; Senior Software Engineer</h3><p class="o">Improwised Technology · Rajkot</p>
+        <p>Owned an eight-year-old production scraping platform: 500K requests/day, up to 300 pods, ~200GB database on rolling three-month retention. Redesigned deduplication after a client invalidated the system's core identity assumption; migrated the scraper from Python to Go.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Apr 2017 — Sep 2018</p><h3>Tech Lead &amp; Senior PHP Developer</h3><p class="o">DevRepublic · Ahmedabad</p>
+        <p>Led Laravel development for a social platform with integrated video chat. Built a Vue.js gift editor with server-side banner-resolution image generation.</p>
+      </div>
+      <div class="ti">
+        <p class="w">Jun 2014 — Apr 2017</p><h3>Founder</h3><p class="o">CodeGeeks · Rajkot</p>
+        <p>Founded an independent software practice — e-commerce platforms, examination systems, payment integrations.</p>
+      </div>
+      <div class="ti">
+        <p class="w">2012 — 2014</p><h3>Earlier</h3><p class="o">Canvass, Mumbai · Improwised Technology, Rajkot</p>
+        <p>Marketing automation on Java and Struts at Canvass. First engineering role at Improwised in 2012 — a company I returned to as Tech Lead seven years later.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><span class="kx">04 — Talks</span><h2>Things I've spoken about</h2></div>
+    <div class="tk">
+      <div class="tkc"><p class="t">Level Up Your Laravel API: Structure, Testing and Other Tools</p><p class="m">JUN 2025 · Simprosys, Ahmedabad<br>Laravel Ahmedabad</p></div>
+      <div class="tkc"><p class="t">Flawless CI/CD via GitHub Actions</p><p class="m">MAR 2023 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+      <div class="tkc"><p class="t">Tips and Tricks for Using Laravel Efficiently</p><p class="m">APR 2022 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+      <div class="tkc"><p class="t">Introduction to Vue JS</p><p class="m">DEC 2019 · RKU City Campus, Rajkot<br>Laravel Rajkot</p></div>
+    </div>
+  </section>
+
+  <div class="ct" id="contact">
+    <h2>If that's the problem you have, let's talk.</h2>
+    <p>I'm most useful where an AI system has to survive contact with real users, real hardware, and real operations.</p>
+    <a class="btn p" href="mailto:adiechahari@gmail.com">adiechahari@gmail.com</a>
+    <div class="lnks">
+      <a href="https://github.com/AdiechaHK">github</a>
+      <a href="https://www.linkedin.com/in/harikrushna-adiecha-19434458/">linkedin</a>
+      <a href="https://twitter.com/HK_Adiecha">twitter</a>
+      <a href="https://adiechahk.blogspot.com/">blog</a>
+    </div>
+  </div>
+  <footer>Away from the keyboard: table tennis, chess, IoT tinkering, pencil drawing.</footer>
+
+</div>
+
+<script>
+function tt(){const r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')}
+if(window.matchMedia && !window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.documentElement.setAttribute('data-theme','light');
+}
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ambient keyword field — his own vocabulary */
+(function(){
+  const words=['Laravel','SQS','Japan','MongoDB','Grafana','Go','500K/day','Prometheus','multi-tenant',
+    'App Runner','replica set','Ahmedabad','LLM','Python','event-driven','PostgreSQL','n8n','Pest',
+    'STT→TTS','webhooks','PHPStan','Portugal','Claude Code','36GB','FastAPI','observability','agents'];
+  const box=document.getElementById('kws'); if(!box)return;
+  // Keep the field clear of the hero text column so body copy stays readable.
+  const clear={x0:12,x1:62,y0:14,y1:78};
+  function spot(){
+    for(let i=0;i<24;i++){
+      const x=Math.random()*92+2, y=Math.random()*88+3;
+      if(x>clear.x0&&x<clear.x1&&y>clear.y0&&y<clear.y1) continue;
+      return [x,y];
+    }
+    return [Math.random()*30+66, Math.random()*88+3];
+  }
+  words.forEach((w,i)=>{
+    const e=document.createElement('span');
+    e.className='kw'; e.textContent=w;
+    const [x,y]=spot();
+    e.style.left=x+'%';
+    e.style.top=y+'%';
+    e.style.fontSize=(10+Math.random()*8).toFixed(1)+'px';
+    e.style.opacity=(0.07+Math.random()*0.13).toFixed(2);
+    e.style.setProperty('--d',(10+Math.random()*12).toFixed(1)+'s');
+    e.style.setProperty('--y',(-8-Math.random()*18).toFixed(0)+'px');
+    e.style.animationDelay=(-Math.random()*10).toFixed(1)+'s';
+    if(reduce) e.style.animation='none';
+    box.appendChild(e);
+  });
+})();
+
+/* typing chip */
+(function(){
+  const el=document.getElementById('typed'); if(!el)return;
+  const ps=['Tech Lead','AI Systems Engineer','Backend Architect','shipped, not demoed'];
+  if(reduce){el.textContent=ps[0];return}
+  let i=0,c=0,del=false;
+  (function step(){
+    const p=ps[i];
+    el.textContent=p.substring(0,del?--c:++c);
+    let s=del?32:64;
+    if(!del&&c===p.length){s=1900;del=true}
+    else if(del&&c===0){del=false;i=(i+1)%ps.length;s=320}
+    setTimeout(step,s);
+  })();
+})();
+
+/* scroll progress */
+const pb=document.getElementById('prog');
+addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  pb.style.width=(h>0?(scrollY/h)*100:0)+'%';
+},{passive:true});
+
+/* count-up */
+if(!reduce){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting||e.target.dataset.done)return;
+    e.target.dataset.done=1;
+    const el=e.target,txt=el.textContent,m=txt.match(/[\d.]+/);
+    if(!m)return;
+    const target=parseFloat(m[0]),pre=txt.slice(0,m.index),post=txt.slice(m.index+m[0].length);
+    const dec=(m[0].split('.')[1]||'').length;
+    let s=null;
+    const step=t=>{if(!s)s=t;const p=Math.min((t-s)/1000,1);
+      el.textContent=pre+(target*(1-Math.pow(1-p,3))).toFixed(dec)+post;
+      if(p<1)requestAnimationFrame(step)};
+    requestAnimationFrame(step);
+  }),{threshold:.6});
+  document.querySelectorAll('.st .v').forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>

@@ -6,14 +6,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio website for Harikrushna V. Adiecha, hosted on GitHub Pages at harikrushna.dev.
 
-**Current state:** The site displays an "Under Construction" placeholder page.
+**Positioning:** The site presents Harikrushna as an engineer who deploys AI systems into production,
+backed by 13+ years of backend architecture and live-system ownership. Content is evidence-led — every
+number on the page is one he can defend in an interview. Do not add claims that cannot be substantiated,
+and do not generate fake activity data.
 
 ## Tech Stack
 
 - Static HTML/CSS/JavaScript (no build tools or package manager)
-- Tailwind CSS via CDN (current index.html)
-- Font Awesome for icons (CDN)
-- Google Analytics tracking (ID: G-VJB7WQ3GHS)
+- Single-file architecture: `index.html` contains all CSS and JS inline
+- Font Awesome 6.5.1 and Inter via CDN
+- Google Analytics (ID: G-VJB7WQ3GHS)
 
 ## Development
 
@@ -24,21 +27,31 @@ python -m http.server 8000
 Then visit http://localhost:8000
 
 **Deployment:**
-Push to `master` branch - GitHub Pages auto-deploys via CNAME (harikrushna.dev).
+Push to `master` — GitHub Pages auto-deploys via CNAME (harikrushna.dev).
 
 ## Architecture
 
 ### Key Files
-- `index.html` - Current live page (Under Construction placeholder using Tailwind)
-- `new-index.html` - Work-in-progress portfolio using Vue 2.x + Tailwind (incomplete)
-- `old-index.html` - Previous version of the site
-- `resume.html` - Separate resume page
-- `config.json` - Theme and meta settings (active/passive title, favicon paths)
-- `profile.json` - Extended profile data (JSON format, not currently used)
+- `index.html` — the live site. Self-contained: inline `<style>`, inline `<script>`, GitHub-profile-inspired layout
+- `resume.html` — separate resume page
+- `time-calculator.html`, `loc/` — standalone utilities
+- `old-index.html`, `new-index.html` — superseded versions, not linked
+- `config.json` — active/passive title and favicon settings
+- `profile.json` — extended profile data (not currently consumed by index.html)
+- `styles/`, `scripts/` — assets for an earlier split-file approach; `index.html` does not use them
 
-### Prepared GitHub-themed Design (not yet live)
-- `styles/github-profile.css` - Full stylesheet with dark/light mode support via CSS custom properties
-- `scripts/landing.js` - JS for copyright year and contribution graph generation
-- Uses `data-theme="dark"` attribute on html element for theming
-- Two-column layout: 296px fixed sidebar + flexible main content
-- Mobile breakpoint at 768px
+### index.html structure
+- Two-column layout: 296px sidebar (avatar, bio, contact, socials) + main content
+- Main content sections: About → Selected Work → Technical Skills → Experience → Tech Talks → Beyond Code
+- **Selected Work** is the centerpiece: each `.work-card` is one shipped system with context, what made
+  it hard, and a measurable result in `.work-result`
+- Theming via `data-theme` on `<html>`, toggled by `toggleTheme()`; all colors come from CSS custom
+  properties defined on `:root` and `[data-theme="light"]`. Never hard-code a color
+- Mobile breakpoint at 768px; `.pinned-grid` and `.work-list` also reflow at 900px
+
+### Notable behaviors
+- Typing effect in `.profile-username` cycles `phrases[]`
+- The pixel grid in `.contrib-section` is a **decorative display, not contribution data** — it spells
+  words from `desktopWords` / `mobileWords` using a 5x7 bitmap font. Available glyphs are limited
+  (L A R V E T I S N P H C O D K); check the `font` object before adding a word
+- Favicon and title swap on window blur/focus
